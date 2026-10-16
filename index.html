@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 校园二手交易平台</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        /* 内部样式（仅首页）：商品卡片的淡入动画 */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .goods-grid .card {
+            animation: fadeUp 0.7s ease both;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== 页眉 + 导航 ==================== -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">校园<span>二手</span>交易平台</a>
+            <nav class="nav" id="nav">
+                <a href="index.html" class="active">首页</a>
+                <a href="list.html">商品列表</a>
+                <a href="publish.html">发布商品</a>
+                <a href="about.html">关于我们</a>
+                <a href="login.html">登录</a>
+            </nav>
+            <button class="nav-toggle" id="navToggle">&#9776;</button>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- ==================== 巨幕：三张图片 + 文案 ==================== -->
+        <div class="banner" id="banner">
+            <img class="banner-item on" src="images/banner1.jpg" alt="校园二手交易">
+            <img class="banner-item" src="images/banner2.jpg" alt="同校当面交易更放心">
+            <img class="banner-item" src="images/banner3.jpg" alt="毕业季好物低价出">
+
+            <div class="banner-text">
+                <h2>让闲置流动起来</h2>
+                <p>同校当面交易 &nbsp;·&nbsp; 不收手续费 &nbsp;·&nbsp; 毕业季更划算</p>
+            </div>
+
+            <button class="banner-arrow arrow-left" id="arrowLeft">&#8249;</button>
+            <button class="banner-arrow arrow-right" id="arrowRight">&#8250;</button>
+            <div class="banner-dots" id="dots">
+                <span class="on"></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        </div>
+
+        <!-- ==================== 平台公告（静态）==================== -->
+        <div class="notice">
+            <h4>&#9670; 平台公告</h4>
+            <ul>
+                <li>· 交易请在校内公共场所当面完成，不要提前转账给陌生人</li>
+                <li>· 发布商品时请上传真实图片，虚假信息会被下架处理</li>
+                <li>· 毕业季期间教材、二手自行车、小家电上架量最大</li>
+            </ul>
+        </div>
+        </div>
+<!-- ==================== 分类入口 ==================== -->
+        <h2 class="section-title">商品分类</h2>
+        <p class="section-sub">Campus Second-hand Market</p>
+        <div class="cate-grid">
+            <a href="list.html" class="cate-item"><span class="ico">书</span>教材书籍</a>
+            <a href="list.html" class="cate-item"><span class="ico">电</span>数码电子</a>
+            <a href="list.html" class="cate-item"><span class="ico">车</span>代步工具</a>
+            <a href="list.html" class="cate-item"><span class="ico">舍</span>宿舍用品</a>
+            <a href="list.html" class="cate-item"><span class="ico">衣</span>服装鞋帽</a>
+            <a href="list.html" class="cate-item"><span class="ico">他</span>其他闲置</a>
+        </div>
+
+        <!-- ==================== 推荐商品 ==================== -->
+        <h2 class="section-title">最新上架</h2>
+        <p class="section-sub">这些是同学们刚发布的闲置好物</p>
+        <div class="goods-grid">
+            <div class="card">
+                <img class="card-img" src="images/goods1.jpg" alt="高等数学教材">
+                <div class="card-body">
+                    <div class="card-title">高等数学（第七版）上下册 九成新</div>
+                    <span class="tag">教材书籍</span><span class="tag">可小刀</span>
+                    <div class="card-meta">
+                        <span class="card-price">￥25<small> 原价 ￥68</small></span>
+                        <span>当面交易</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img class="card-img" src="images/goods2.jpg" alt="罗技无线鼠标">
+                <div class="card-body">
+                    <div class="card-title">罗技无线鼠标 M185 用了半年 功能正常</div>
+                    <span class="tag">数码电子</span>
+                    <div class="card-meta">
+                        <span class="card-price">￥35<small> 原价 ￥89</small></span>
+                        <span>当面交易</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img class="card-img" src="images/goods3.jpg" alt="山地自行车">
+                <div class="card-body">
+                    <div class="card-title">捷安特山地车 21 速 毕业出 送车锁</div>
+                    <span class="tag">代步工具</span><span class="tag">毕业甩卖</span>
+                    <div class="card-meta">
+                        <span class="card-price">￥260<small> 原价 ￥980</small></span>
+                        <span>当面交易</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img class="card-img" src="images/goods4.jpg" alt="台灯">
+                <div class="card-body">
+                    <div class="card-title">宿舍护眼台灯 三档调光 带 USB 充电口</div>
+                    <span class="tag">宿舍用品</span>
+                    <div class="card-meta">
+                        <span class="card-price">￥18<small> 原价 ￥49</small></span>
+                        <span>当面交易</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img class="card-img" src="images/goods5.jpg" alt="机械键盘">
+                <div class="card-body">
+                    <div class="card-title">黑爵机械键盘 青轴 87 键 送拔键器</div>
+                    <span class="tag">数码电子</span><span class="tag">可小刀</span>
+                    <div class="card-meta">
+                        <span class="card-price">￥88<small> 原价 ￥199</small></span>
+                        <span>当面交易</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img class="card-img" src="images/goods6.jpg" alt="英语四六级资料">
+                <div class="card-body">
+                    <div class="card-title">英语四六级真题全套 含听力音频 有笔记</div>
+                    <span class="tag">教材书籍</span>
+                    <div class="card-meta">
+                        <span class="card-price">￥15<small> 原价 ￥45</small></span>
+                        <span>当面交易</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img class="card-img" src="images/goods7.jpg" alt="小冰箱">
+                <div class="card-body">
+                    <div class="card-title">宿舍迷你小冰箱 20L 静音款 搬宿舍出</div>
+                    <span class="tag">宿舍用品</span>
+                    <div class="card-meta">
+                        <span class="card-price">￥120<small> 原价 ￥299</small></span>
+                        <span>当面交易</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img class="card-img" src="images/goods8.jpg" alt="运动鞋">
+                <div class="card-body">
+                    <div class="card-title">耐克运动鞋 42 码 只穿过三四次</div>
+                    <span class="tag">服装鞋帽</span><span class="tag">可小刀</span>
+                    <div class="card-meta">
+                        <span class="card-price">￥150<small> 原价 ￥499</small></span>
+                        <span>当面交易</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 热销排行（有序列表）==================== -->
+        <h2 class="section-title">本周热销排行</h2>
+        <p class="section-sub">数据来自平台近 7 天的成交记录</p>
+        <ol class="rank">
+            <li>高等数学教材（第七版） <span>成交 43 件</span></li>
+            <li>英语四六级真题资料 <span>成交 38 件</span></li>
+            <li>宿舍护眼台灯 <span>成交 31 件</span></li>
+            <li>机械键盘（青轴） <span>成交 26 件</span></li>
+            <li>山地自行车 <span>成交 22 件</span></li>
+            <li>罗技无线鼠标 <span>成交 19 件</span></li>
+            <li>迷你小冰箱 <span>成交 15 件</span></li>
+            <li>耐克运动鞋（42 码） <span>成交 12 件</span></li>
+        </ol>
+
+    </main>
+
+    <!-- ==================== 页脚 ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <p>校园二手交易平台 2026</p>
+        </div>
+    </footer>
+
+    <button class="back-top" id="backTop">↑</button>
+
+    <script src="js/main.js"></script>
+    <script src="js/slider.js"></script>
+
+    <!-- 内部 JavaScript（仅首页）：点击商品卡片跳转到详情页 -->
+    <script>
+        // 知识点：DOM 获取元素、for 循环、事件绑定（教材 P257、P216、P278）
+        var cards = document.querySelectorAll(".goods-grid .card");
+        for (var i = 0; i < cards.length; i++) {
+            // 给每张卡片绑定点击事件：点一下跳到商品详情页
+            cards[i].onclick = function () {
+                window.location.href = "detail.html";
+            };
+            cards[i].style.cursor = "pointer";   // 鼠标移上去变成小手
+        }
+    </script>
+</body>
+</html>

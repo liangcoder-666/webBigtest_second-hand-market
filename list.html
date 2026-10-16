@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品列表 - 校园二手交易平台</title>
+    <!-- 外部样式文件（知识点：外部样式表，教材 P48） -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 响应式样式（知识点：媒体查询，教材 P323） -->
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- ============================================================
+         内部样式（知识点：内部样式表，教材 P48）
+         本页专用：面包屑导航 + 筛选表单排版 + 列表页小标题
+         ★ 只在本页生效，不改动 css/style.css
+         ============================================================ -->
+    <style>
+        /* 面包屑导航：知识点 超链接 a（教材 P23） */
+        .breadcrumb {
+            padding: 18px 0 2px;
+            color: #7a6a55;
+            font-size: 13px;
+        }
+        .breadcrumb a { color: #9e2b25; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb em { color: #4a3b2a; font-style: normal; }   /* 当前页不是链接 */
+
+        /* 筛选表单：知识点 flex 弹性布局（教材 P327） */
+        .filter-box {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            gap: 16px;
+            padding: 22px 26px;
+            margin: 12px 0 30px;
+        }
+        .filter-box .form-item {
+            margin-bottom: 0;                /* 盖掉 .form-item 的下外边距 */
+            flex: 1 1 190px;                 /* 每项等分，窄了就换行 */
+        }
+        .filter-box .form-item label { font-size: 13px; margin-bottom: 5px; }
+        .filter-box .btn { flex: 0 0 auto; }  /* 按钮不参与拉伸 */
+
+        /* 列表页小标题 */
+        .page-head { margin: 4px 0 0; }
+        .page-head h2 { font-size: 22px; color: #4a3b2a; }
+        .page-head span { color: #8c8578; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== 页眉 + 导航（知识点：无序列表导航，教材 P23）==================== -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">校园<span>二手</span>交易平台</a>
+            <nav class="nav" id="nav">
+                <a href="index.html">首页</a>
+                <a href="list.html" class="active">商品列表</a>       <!-- 当前页高亮 -->
+                <a href="publish.html">发布商品</a>
+                <a href="about.html">关于我们</a>
+                <a href="login.html">登录</a>
+            </nav>
+            <button class="nav-toggle" id="navToggle">&#9776;</button>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- ==================== 面包屑导航 ==================== -->
+        <div class="breadcrumb">
+            <a href="index.html">首页</a> <span>/</span> <em>商品列表</em>
+        </div>
+
+        <!-- ==================== 筛选区 ====================
+             知识点：表单 form（教材 P161）、下拉列表 select（教材 P164）、
+                     文本输入框 input[type=text]（教材 P164） -->
+        <form class="form-box filter-box" action="list.html" method="get">
+            <div class="form-item">
+                <label for="cate">商品分类</label>
+                <select id="cate" name="cate">
+                    <option value="">全部分类</option>
+                    <option value="book">教材书籍</option>
+                    <option value="digital">数码电子</option>
+                    <option value="bike">代步工具</option>
+                    <option value="dorm">宿舍用品</option>
+                    <option value="clothes">服装鞋帽</option>
+                    <option value="other">其他闲置</option>
+                </select>
+            </div>
+
+            <div class="form-item">
+                <label for="sort">价格排序</label>
+                <select id="sort" name="sort">
+                    <option value="default">默认排序</option>
+                    <option value="priceAsc">价格从低到高</option>
+                    <option value="priceDesc">价格从高到低</option>
+                    <option value="newest">最新发布</option>
+                </select>
+            </div>
+
+            <div class="form-item">
+                <label for="kw">关键词搜索</label>
+                <input type="text" id="kw" name="kw" placeholder="例如：高数、键盘、山地车">
+            </div>
+
+            <button class="btn" type="submit">搜索</button>
+        </form>
+
+        <!-- ==================== 商品数量提示 ==================== -->
+        <div class="page-head">
+            <h2>全部闲置好物</h2>
+            <span>共找到 8 件商品 · 同校当面交易更放心</span>
+        </div>
+
+        <!-- ==================== 商品卡片网格 ====================
+             知识点：grid 网格布局（教材 P360）、盒子模型（教材 P87）
+                      图像 img + alt（教材 P29） -->
+        <div class="goods-grid">
+
+            <!-- 商品1：教材书籍 -->
+            <div class="card">
+                <a href="detail.html"><img class="card-img" src="images/goods1.jpg" alt="高等数学教材"></a>
+                <div class="card-body">
+                    <div class="card-title"><a href="detail.html">高等数学（第七版）上下册 九成新</a></div>
+                    <span class="tag">教材书籍</span><span class="tag">可小刀</span>
+                    <div class="card-meta">
+                        <span class="card-price">￥25<small> 原价 ￥68</small></span>
+                        <span>图书馆交易</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 商品2：数码电子 -->
+            <div class="card">
+                <a href="detail.html"><img class="card-img" src="images/goods2.jpg" alt="罗技无线鼠标"></a>
+                <div class="card-body">
+                    <div class="card-title"><a href="detail.html">罗技无线鼠标 M185 用了半年 功能正常</a></div>
+                    <span class="tag">数码电子</span>
+                    <div class="card-meta">
+                        <span class="card-price">￥35<small> 原价 ￥89</small></span>
+                        <span>当面交易</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 商品3：代步工具 -->
+            <div class="card">
+                <a href="detail.html"><img class="card-img" src="images/goods3.jpg" alt="捷安特山地自行车"></a>
+                <div class="card-body">
+                    <div class="card-title"><a href="detail.html">捷安特山地车 21 速 毕业出 送车锁</a></div>
+                    <span class="tag">代步工具</span><span class="tag">毕业甩卖</span>
+                    <div class="card-meta">
+                        <span class="card-price">￥260<small> 原价 ￥980</small></span>
+                        <span>宿舍楼下交易</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 商品4：宿舍用品 -->
+            <div class="card">
+                <a href="detail.html"><img class="card-img" src="images/goods4.jpg" alt="宿舍护眼台灯"></a>
+                <div class="card-body">
+                    <div class="card-title"><a href="detail.html">宿舍护眼台灯 三档调光 带 USB 充电口</a></div>
+                    <span class="tag">宿舍用品</span>
+                    <div class="card-meta">
+                        <span class="card-price">￥18<small> 原价 ￥49</small></span>
+                        <span>当面交易</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 商品5：数码电子 -->
+            <div class="card">
+                <a href="detail.html"><img class="card-img" src="images/goods5.jpg" alt="黑爵机械键盘"></a>
+                <div class="card-body">
+                    <div class="card-title"><a href="detail.html">黑爵机械键盘 青轴 87 键 送拔键器</a></div>
+                    <span class="tag">数码电子</span><span class="tag">可小刀</span>
+                    <div class="card-meta">
+                        <span class="card-price">￥88<small> 原价 ￥199</small></span>
+                        <span>当面交易</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 商品6：教材书籍 -->
+            <div class="card">
+                <a href="detail.html"><img class="card-img" src="images/goods6.jpg" alt="英语四六级真题资料"></a>
+                <div class="card-body">
+                    <div class="card-title"><a href="detail.html">英语四六级真题全套 含听力音频 有笔记</a></div>
+                    <span class="tag">教材书籍</span><span class="tag">可小刀</span>
+                    <div class="card-meta">
+                        <span class="card-price">￥15<small> 原价 ￥45</small></span>
+                        <span>当面交易</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 商品7：宿舍用品 -->
+            <div class="card">
+                <a href="detail.html"><img class="card-img" src="images/goods7.jpg" alt="宿舍迷你小冰箱"></a>
+                <div class="card-body">
+                    <div class="card-title"><a href="detail.html">宿舍迷你小冰箱 20L 静音款 搬宿舍出</a></div>
+                    <span class="tag">宿舍用品</span>
+                    <div class="card-meta">
+                        <span class="card-price">￥120<small> 原价 ￥299</small></span>
+                        <span>自提</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 商品8：服装鞋帽 -->
+            <div class="card">
+                <a href="detail.html"><img class="card-img" src="images/goods8.jpg" alt="耐克运动鞋"></a>
+                <div class="card-body">
+                    <div class="card-title"><a href="detail.html">耐克运动鞋 42 码 只穿过三四次</a></div>
+                    <span class="tag">服装鞋帽</span><span class="tag">可小刀</span>
+                    <div class="card-meta">
+                        <span class="card-price">￥150<small> 原价 ￥499</small></span>
+                        <span>当面交易</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ==================== 分页 ====================
+             知识点：超链接 a 实现页面跳转（教材 P23） -->
+        <div class="pager">
+            <a href="list.html">上一页</a>
+            <a href="list.html" class="on">1</a>
+            <a href="list.html">2</a>
+            <a href="list.html">3</a>
+            <a href="list.html">4</a>
+            <a href="list.html">5</a>
+            <a href="list.html">下一页</a>
+        </div>
+
+    </main>
+
+    <!-- ==================== 页脚 ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <p>校园二手交易平台 2026</p>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮（知识点：固定定位 position: fixed，教材 P104，由 main.js 控制显示） -->
+    <button class="back-top" id="backTop">↑</button>
+
+    <!-- 外部 JavaScript 文件（知识点：外部 JS，教材 P205） -->
+    <script src="js/main.js"></script>
+</body>
+</html>

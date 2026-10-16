@@ -1,0 +1,571 @@
+/* ============================================================
+   校园二手交易平台 —— 公共样式 style.css
+   【外部样式文件】教材参考：项目3（P43 起）、项目4（P85 起）
+   ============================================================ */
+
+/* ---------- 1. 全局重置 ----------
+   知识点：盒子模型进阶 box-sizing（教材 P89 任务4-2）
+   * 通配选择器（教材 P48 任务3-2）                     */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;          /* 让 padding 和 border 算进 width 里 */
+}
+
+body {
+    font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    font-size: 14px;
+    color: #2b2b2b;
+    background-color: #efe9dc;
+    line-height: 1.7;                /* 行高，教材 P62 任务3-4 */
+}
+
+a { text-decoration: none; color: inherit; }
+ul, ol { list-style: none; }         /* 去掉列表默认的小圆点，教材 P23 */
+img { display: block; max-width: 100%; }
+table { border-collapse: collapse; width: 100%; }
+
+/* ---------- 2. 版心容器 ----------
+   知识点：盒子模型 margin auto 水平居中（教材 P87 任务4-1） */
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/* ---------- 3. 页眉 + 导航 ----------
+   知识点：flex 弹性布局（教材 P327 任务8-3）
+   知识点：定位 position: sticky 吸顶（教材 P104 任务4-4）
+   知识点：显示类型 display: inline-block（教材 P98 任务4-3） */
+.header {
+    background-color: #fffdf7;
+    box-shadow: 0 2px 10px rgba(158, 43, 37, 0.08);   /* 阴影，教材 P129 */
+    position: sticky;                /* 吸顶定位 */
+    top: 0;
+    z-index: 100;
+}
+.header-inner {
+    display: flex;                   /* 弹性布局：让 logo 和导航一左一右 */
+    justify-content: space-between;
+    align-items: center;
+    height: 72px;
+}
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #9e2b25;
+    letter-spacing: 1px;
+}
+.logo span { color: #7a6a55; }       /* 强调色 */
+.nav {
+    display: flex;
+    align-items: center;
+}
+.nav a {
+    display: inline-block;           /* 显示类型设定 */
+    padding: 9px 18px;               /* 盒子模型：内边距 */
+    margin-left: 4px;
+    color: #4a3b2a;
+    border-radius: 8px;              /* 圆角，教材 P129 */
+    transition: all 0.3s;            /* 过渡，教材 P129 */
+}
+.nav a:hover,
+.nav a.active {
+    color: #fffdf7;
+    background-color: #9e2b25;
+}
+/* 汉堡按钮：小屏才显示（配合 responsive.css 与 main.js） */
+.nav-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #9e2b25;
+    cursor: pointer;
+}
+
+/* ---------- 4. 通用标题 ---------- */
+.section-title {
+    text-align: center;              /* 文本对齐，教材 P62 */
+    font-size: 26px;
+    color: #4a3b2a;
+    margin: 50px 0 8px;
+}
+.section-sub {
+    text-align: center;
+    color: #7a6a55;
+    font-size: 14px;
+    margin-bottom: 32px;
+}
+
+/* ---------- 5. 按钮 ---------- */
+.btn {
+    display: inline-block;
+    padding: 11px 30px;
+    background-color: #9e2b25;
+    color: #fffdf7;
+    border: none;
+    border-radius: 25px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.btn:hover {
+    background-color: #7a211d;
+    transform: translateY(-2px);     /* 2D 变形 y 轴平移，教材 P129 */
+}
+.btn-green { background-color: #7a6a55; }
+.btn-green:hover { background-color: #4a3b2a; }
+
+/* ---------- 6. 商品卡片 ----------
+   知识点：盒子模型 border/padding/margin（教材 P87）
+   知识点：背景设定（教材 P114）
+   知识点：CSS3 圆角 + 阴影 + 变形（教材 P129） */
+.card {
+    background-color: #fffdf7;
+    border: 1px solid #ded3ba;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.35s;
+}
+.card:hover {
+    transform: translateY(-6px);                     /* 悬停上浮 */
+    box-shadow: 0 14px 28px rgba(158, 43, 37, 0.16);
+    border-color: #e0d5bd;
+}
+.card-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;             /* 高度按 4:3 自动跟着宽度算，任何屏幕宽度都不会裁切 */
+    object-fit: cover;
+    object-position: center;
+    background-color: #f2ece0;
+}
+.card-body { padding: 14px 16px 18px; }
+.card-title {
+    font-size: 15px;
+    font-weight: bold;
+    color: #2b2b2b;
+    height: 48px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+.card-price {
+    color: #c0392b;
+    font-size: 20px;
+    font-weight: bold;
+}
+.card-price small { font-size: 13px; font-weight: normal; }
+.card-old {
+    color: #8c8578;
+    font-size: 13px;
+    text-decoration: line-through;
+    margin-left: 8px;
+}
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    color: #8c8578;
+    font-size: 12px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #ded3ba;
+}
+.tag {
+    display: inline-block;
+    padding: 2px 10px;
+    margin-right: 6px;
+    background-color: #faf5ea;
+    color: #9e2b25;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+/* ---------- 7. 商品网格（4 列）----------
+   知识点：grid 网格布局（教材 P360 任务9-1） */
+.goods-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);   /* 4 列，每列等宽 */
+    gap: 22px;
+    margin-bottom: 40px;
+}
+
+/* ---------- 8. 分类入口 ---------- */
+.cate-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    margin-bottom: 10px;
+}
+.cate-item {
+    background-color: #fffdf7;
+    border-radius: 12px;
+    text-align: center;
+    padding: 22px 10px;
+    transition: all 0.3s;
+    border: 1px solid #ded3ba;
+}
+.cate-item:hover {
+    background-color: #9e2b25;
+    color: #fffdf7;
+    transform: translateY(-4px);
+}
+.cate-item .ico { font-size: 28px; display: block; margin-bottom: 8px; }
+
+/* ---------- 9. 商品详情页 ---------- */
+.detail-wrap {
+    display: grid;
+    grid-template-columns: 480px 1fr;    /* 左图右信息 */
+    gap: 40px;
+    background-color: #fffdf7;
+    border-radius: 12px;
+    padding: 30px;
+    margin-top: 26px;
+}
+.detail-img {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #ded3ba;
+}
+.detail-info h2 { font-size: 24px; color: #4a3b2a; margin-bottom: 12px; }
+.detail-price {
+    background-color: #fdf4f2;
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 16px 0;
+}
+.detail-price strong { font-size: 32px; color: #c0392b; }
+
+/* 参数表：定义列表 dl/dt/dd（教材 P23 任务2-2） */
+.param-list { margin: 18px 0; }
+.param-list dt {
+    float: left;                      /* 浮动，教材 P98 */
+    width: 90px;
+    color: #7a6a55;
+    clear: both;
+}
+.param-list dd {
+    padding-left: 100px;
+    margin-bottom: 9px;
+    color: #2b2b2b;
+}
+
+/* ---------- 10. 表单 ----------
+   知识点：表单样式设计（教材 P182 任务5-3） */
+.form-box {
+    background-color: #fffdf7;
+    border-radius: 12px;
+    padding: 34px 40px;
+    margin: 26px auto 40px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+.form-item { margin-bottom: 20px; }
+.form-item label {
+    display: block;
+    margin-bottom: 7px;
+    color: #4a3b2a;
+    font-weight: bold;
+}
+.form-item label em {
+    color: #c0392b;
+    font-style: normal;
+}
+.form-item input[type="text"],
+.form-item input[type="password"],
+.form-item input[type="email"],
+.form-item input[type="tel"],
+.form-item input[type="number"],
+.form-item select,
+.form-item textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #d8cdb8;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    color: #2b2b2b;
+    outline: none;
+    transition: all 0.3s;
+}
+.form-item input:focus,
+.form-item select:focus,
+.form-item textarea:focus {
+    border-color: #9e2b25;
+    box-shadow: 0 0 0 3px rgba(158, 43, 37, 0.12);
+}
+.form-item textarea { height: 110px; resize: vertical; }
+.radio-group label,
+.check-group label {
+    display: inline-block;
+    font-weight: normal;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.tip { font-size: 12px; color: #8c8578; margin-top: 5px; }
+.tip.error { color: #c0392b; }
+.tip.ok { color: #7a6a55; }
+
+/* ---------- 11. 表格（教材 P31 任务2-4）---------- */
+.data-table th,
+.data-table td {
+    border: 1px solid #ded3ba;
+    padding: 12px 16px;
+    text-align: center;
+}
+.data-table th {
+    background-color: #9e2b25;
+    color: #fffdf7;
+    font-weight: normal;
+}
+.data-table tr:nth-child(even) {      /* 结构伪类选择器，教材 P54 */
+    background-color: #faf5ea;
+}
+
+/* ---------- 12. 分页 ---------- */
+.pager {
+    text-align: center;
+    margin: 30px 0 50px;
+}
+.pager a {
+    display: inline-block;
+    padding: 7px 15px;
+    margin: 0 4px;
+    background-color: #fffdf7;
+    border: 1px solid #ded3ba;
+    border-radius: 8px;
+    color: #4a3b2a;
+    transition: all 0.3s;
+}
+.pager a:hover,
+.pager a.on {
+    background-color: #9e2b25;
+    color: #fffdf7;
+    border-color: #9e2b25;
+}
+
+/* ---------- 13. 页脚（教材 P154 任务4-10）---------- */
+.footer {
+    background-color: #4a3b2a;       /* 深棕（东坡博客配色） */
+    color: #e0d5bd;
+    text-align: center;
+    padding: 26px 0;
+    margin-top: 60px;
+    font-size: 13px;
+}
+.footer a { color: #c9b894; }
+
+/* ---------- 13.1 分类入口图标：朱红圆形 + 汉字 ---------- */
+.cate-item .ico {
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+    background-color: #9e2b25;       /* 朱红圆底 */
+    color: #fff8ee;                  /* 米白字 */
+    font-size: 19px;
+    display: block;
+    transition: all 0.3s;
+}
+.cate-item:hover .ico {
+    background-color: #fff8ee;
+    color: #9e2b25;
+}
+
+/* ---------- 14. 回到顶部按钮 ----------
+   知识点：固定定位 position: fixed（教材 P104 任务4-4） */
+.back-top {
+    position: fixed;
+    right: 30px;
+    bottom: 40px;
+    width: 46px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    background-color: #9e2b25;
+    color: #fffdf7;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;                    /* 默认藏起来，滚动后由 JS 显示 */
+    box-shadow: 0 6px 16px rgba(158, 43, 37, 0.3);
+    transition: all 0.3s;
+}
+.back-top:hover {
+    background-color: #7a6a55;
+    transform: translateY(-4px);
+}
+
+/* ---------- 15. 巨幕轮播（首页）----------
+   知识点：定位（父相子绝）、过渡、变形（教材 P104、P129） */
+.banner {
+    position: relative;
+    height: 380px;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-top: 24px;
+    box-shadow: 0 10px 30px rgba(158, 43, 37, 0.15);
+}
+.banner-item {
+    position: absolute;               /* 绝对定位：所有图片叠在一起 */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;                       /* 默认透明，由 JS 控制显示 */
+    transition: opacity 0.8s;         /* 淡入淡出过渡 */
+}
+.banner-item.on { opacity: 1; }
+.banner-text {
+    position: absolute;
+    left: 70px;
+    bottom: 62px;
+    color: #fff8ee;                  /* 米白（取自东坡博客配色） */
+    z-index: 2;
+    text-shadow: 0 2px 14px rgba(40, 20, 10, 0.55);
+}
+.banner-text h2 {
+    font-size: 50px;                 /* 字号放大 */
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+}
+.banner-text p {
+    font-size: 18px;
+    letter-spacing: 2px;
+    opacity: 0.95;
+}
+.banner:hover /* ---------- 15.1 巨幕左右箭头 ---------- */
+.banner-arrow {
+    position: absolute;
+    top: 50%;
+    margin-top: -22px;
+    width: 44px;
+    height: 44px;
+    line-height: 42px;
+    text-align: center;
+    font-size: 22px;
+    color: #fff8ee;
+    background-color: rgba(40, 20, 10, 0.25);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: 2;
+}
+.banner:hover .banner-arrow { opacity: 1; }
+.banner-arrow:hover { background-color: rgba(40, 20, 10, 0.5); }
+.arrow-left  { left: 20px; }
+.arrow-right { right: 20px; }
+
+/* ---------- 15.2 巨幕小圆点 ---------- */
+.banner-dots {
+    position: absolute;
+    right: 40px;
+    bottom: 30px;
+    z-index: 2;
+}
+.banner-dots span {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    margin-left: 9px;
+    border-radius: 50%;
+    background-color: rgba(255, 248, 238, 0.55);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.banner-dots span.on {
+    background-color: #fff8ee;
+    transform: scale(1.3);
+}
+
+/* ---------- 16. 公告栏 ---------- */
+.notice {
+    background-color: #faf5ea;       /* 宣纸浅底 */
+    border-left: 5px solid #9e2b25;  /* 朱红竖线 */
+    border-radius: 8px;
+    padding: 16px 24px;
+    margin: 26px 0 10px;
+    color: #7a6a55;
+}
+.notice h4 {
+    margin-bottom: 6px;
+    color: #9e2b25;
+}
+.notice li {
+    font-size: 13px;
+    line-height: 2;
+}
+
+/* ---------- 17. 排行榜（有序列表 ol）---------- */
+.rank {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 40px;
+    background-color: #fffdf7;
+    border-radius: 12px;
+    padding: 26px 34px;
+    margin-bottom: 50px;
+}
+.rank li {
+    list-style: decimal inside;       /* 显示序号，教材 P23 */
+    padding: 9px 0;
+    border-bottom: 1px dashed #f2ece0;
+    color: #4a3b2a;
+    display: flex;
+    justify-content: space-between;
+}
+.rank li span { color: #8c8578; font-size: 13px; font-weight: normal; }
+
+/* ---------- 18. 关于我们 ---------- */
+.about-box {
+    background-color: #fffdf7;
+    border-radius: 12px;
+    padding: 40px 50px;
+    margin-top: 26px;
+    line-height: 2.1;
+}
+.about-box h3 {
+    color: #4a3b2a;
+    margin: 26px 0 12px;
+    padding-left: 14px;
+    border-left: 5px solid #7a6a55;
+    font-size: 19px;
+}
+.about-box p { color: #4a3b2a; margin-bottom: 12px; text-indent: 2em; }
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin: 20px 0 10px;
+}
+.team-item {
+    text-align: center;
+    padding: 24px 12px;
+    background-color: #faf5ea;
+    border-radius: 12px;
+    transition: all 0.3s;
+}
+.team-item:hover { background-color: #faf5ea; transform: translateY(-5px); }
+.team-item img {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    margin: 0 auto 12px;
+    border: 3px solid #e0d5bd;
+}
+.team-item h4 { color: #9e2b25; margin-bottom: 4px; }
+.team-item p { font-size: 12px; color: #8c8578; text-indent: 0; }
+
+/* ---------- 19. 通用间距工具类 ---------- */
+.mt20 { margin-top: 20px; }
+.mt40 { margin-top: 40px; }
+.mb20 { margin-bottom: 20px; }
+.text-center { text-align: center; }
+.clearfix::after {                    /* 清除浮动，教材 P98 */
+    content: "";
+    display: block;
+    clear: both;
+}

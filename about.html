@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - 校园二手交易平台</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- ============================================================
+         内部样式（本页专用，不改动 css/style.css）
+         教材参考：项目3 内部样式表（P43 起）
+         ============================================================ -->
+    <style>
+        /* 知识点：平滑滚动（点击锚点链接时页面缓缓滑到目标位置） */
+        html { scroll-behavior: smooth; }
+
+        /* ---------- 面包屑导航 ---------- */
+        .breadcrumb {
+            margin: 20px 0 8px;
+            font-size: 13px;
+            color: #7a6a55;
+        }
+        .breadcrumb a { color: #9e2b25; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { margin: 0 6px; color: #d8cdb8; }
+
+        /* ---------- 页面内锚点导航（知识点：锚点链接，教材 P23）----------
+           点击这些链接会跳到页面里对应 id 的标题处 */
+        .anchor-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 14px 0 4px;
+        }
+        .anchor-nav a {
+            padding: 7px 18px;
+            background-color: #fffdf7;
+            border: 1px solid #ded3ba;
+            border-radius: 20px;
+            color: #4a3b2a;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+        .anchor-nav a:hover {
+            background-color: #9e2b25;
+            color: #fffdf7;
+            border-color: #9e2b25;
+        }
+
+        /* 锚点跳转时，标题上方留出空隙，避免被吸顶的导航栏挡住 */
+        .about-box h3[id] { scroll-margin-top: 92px; }
+
+        /* ---------- 数据表格下方的小字说明 ---------- */
+        .table-note {
+            font-size: 12px;
+            color: #8c8578;
+            text-align: right;
+            margin-top: 10px;
+            text-indent: 0;              /* 取消 .about-box p 的 2 字缩进 */
+        }
+
+        /* ---------- 联系方式列表 ---------- */
+        .contact-list li {
+            color: #4a3b2a;
+            margin-bottom: 9px;
+        }
+        .contact-list li strong {
+            display: inline-block;
+            width: 84px;
+            color: #2b2b2b;
+        }
+        .contact-list a { color: #9e2b25; }
+        .contact-list a:hover { text-decoration: underline; }
+
+        /* ---------- 常见问题：定义列表 dl / dt / dd（教材 P23）---------- */
+        .faq-list { margin-top: 8px; }
+        .faq-list dt {
+            font-weight: bold;
+            color: #4a3b2a;
+            margin-top: 16px;
+        }
+        .faq-list dt::before {
+            content: "Q ";
+            color: #7a6a55;
+        }
+        .faq-list dd {
+            color: #4a3b2a;
+            margin: 6px 0 0 18px;
+            padding-left: 12px;
+            border-left: 3px solid #ded3ba;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== 页眉 + 导航 ==================== -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">校园<span>二手</span>交易平台</a>
+
+            <!-- 汉堡按钮：只在手机端显示（配合 css/responsive.css） -->
+            <button class="nav-toggle" id="navToggle" aria-label="展开导航">☰</button>
+
+            <nav class="nav" id="nav">
+                <a href="index.html">首页</a>
+                <a href="list.html">商品列表</a>
+                <a href="publish.html">发布商品</a>
+                <a href="about.html" class="active">关于我们</a>
+                <a href="login.html">登录</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- ==================== 面包屑（首页 / 关于我们）==================== -->
+        <div class="breadcrumb">
+            <a href="index.html">首页</a><span>/</span>关于我们
+        </div>
+
+        <!-- ==================== 页面内锚点导航（教材 P23）====================
+             点击下面的链接可以跳到本页对应的内容区 -->
+        <nav class="anchor-nav">
+            <a href="#intro">平台简介</a>
+            <a href="#data">我们的数据</a>
+            <a href="#team">团队成员</a>
+            <a href="#contact">联系我们</a>
+            <a href="#faq">常见问题</a>
+        </nav>
+
+        <!-- ==================== 正文内容 ==================== -->
+        <div class="about-box">
+
+            <!-- ---------- 平台简介 ---------- -->
+            <h3 id="intro">平台简介</h3>
+            <p>
+                每到学期末和毕业季，宿舍里总堆着一大堆“用不上又舍不得扔”的东西：翻过几页的教材、
+                只穿过一两次的运动鞋、还能用的台灯和自行车。扔了可惜，挂在综合二手平台上又麻烦——
+                买家太远、邮费太贵、还要反复沟通。我们做这个校园二手交易平台，就是想让这件事变简单：
+                只服务同一所学校的同学，线上下单、线下当面交易，几分钟就能把闲置变成生活费。
+            </p>
+            <p>
+                平台的所有商品都来自在校学生本人发布，覆盖教材书籍、数码电子、代步工具、宿舍用品、
+                服装鞋帽和其他闲置六大类。发布商品不收取任何手续费，成交价格由买卖双方自己商量，
+                平台只负责把信息整理清楚、把交易流程做顺畅。对买家来说，能花更少的钱买到需要的东西；
+                对卖家来说，闲置物品可以快速找到“下一个主人”。
+            </p>
+            <p>
+                我们认为，校园二手交易不只是一笔买卖，更是一种环保又实在的生活方式。一件商品在校园里
+                多流转一次，就少产生一份浪费。让闲置流动起来，让资源被更充分地利用，这是我们做平台的
+                初心，也是我们最想坚持的一件事。
+            </p>
+            <p>
+                目前平台提供商品分类浏览、关键词搜索、在线发布、收藏和联系卖家等功能，页面也做了响应式
+                适配，手机上同样可以顺畅使用。未来我们计划加入信用评价、校内自提点等功能，让同校交易
+                更安全、更省心。
+            </p>
+
+            <!-- ---------- 我们的数据 ---------- -->
+            <h3 id="data">我们的数据</h3>
+            <table class="data-table">
+                <caption>平台运营数据统计（截至 2026 年 6 月）</caption>
+                <thead>
+                    <tr>
+                        <th>统计项目</th>
+                        <th>数量</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>注册会员数</td>
+                        <td>3862 人</td>
+                        <td>已通过校园身份认证的学生</td>
+                    </tr>
+                    <tr>
+                        <td>在售商品</td>
+                        <td>1268 件</td>
+                        <td>当前正在出售的闲置物品</td>
+                    </tr>
+                    <tr>
+                        <td>累计成交</td>
+                        <td>9457 笔</td>
+                        <td>平台上线以来的成功交易总数</td>
+                    </tr>
+                    <tr>
+                        <td>好评率</td>
+                        <td>98.6 %</td>
+                        <td>交易完成后由买家给出的评价</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="table-note">数据每月更新一次，仅用于课程演示。</p>
+
+            <!-- ---------- 团队成员 ---------- -->
+            <h3 id="team">团队成员</h3>
+            <div class="team-grid">
+                <div class="team-item">
+                    <img src="images/avatar1.jpg" alt="张明 头像">
+                    <h4>张明</h4>
+                    <p>项目负责人</p>
+                    <p>负责整体规划与需求梳理，统筹开发进度。</p>
+                </div>
+                <div class="team-item">
+                    <img src="images/avatar2.jpg" alt="李婷 头像">
+                    <h4>李婷</h4>
+                    <p>前端开发</p>
+                    <p>负责页面布局与样式，完成响应式适配。</p>
+                </div>
+                <div class="team-item">
+                    <img src="images/avatar3.jpg" alt="王浩 头像">
+                    <h4>王浩</h4>
+                    <p>后端开发</p>
+                    <p>负责数据接口与功能逻辑，保障运行稳定。</p>
+                </div>
+                <div class="team-item">
+                    <img src="images/avatar4.jpg" alt="赵雪 头像">
+                    <h4>赵雪</h4>
+                    <p>视觉设计</p>
+                    <p>负责配色与图标设计，让界面清爽好用。</p>
+                </div>
+            </div>
+
+            <!-- ---------- 联系我们 ---------- -->
+            <h3 id="contact">联系我们</h3>
+            <ul class="contact-list">
+                <li><strong>客服邮箱：</strong><a href="mailto:service@example.com">service@example.com</a></li>
+                <li><strong>客服电话：</strong>0518-8888888</li>
+                <li><strong>办公地址：</strong>江苏省连云港市海州区 · 大学生创业中心 3 楼</li>
+                <li><strong>服务时间：</strong>周一至周五 9:00 - 18:00</li>
+            </ul>
+
+            <!-- ---------- 常见问题 ---------- -->
+            <h3 id="faq">常见问题</h3>
+            <dl class="faq-list">
+                <dt>在平台发布商品要收费吗？</dt>
+                <dd>完全免费。发布商品、浏览商品都不收取任何费用，成交价格由买卖双方自行商量。</dd>
+
+                <dt>怎样保证交易安全？</dt>
+                <dd>建议在校内人多的地方当面交易、当面验货，确认无误后再付款，不要提前给陌生人转账。</dd>
+
+                <dt>商品一直卖不出去怎么办？</dt>
+                <dd>可以适当下调价格、补充清晰的实物图片，或者在毕业季等上架量大的时段重新发布。</dd>
+
+                <dt>交易中产生纠纷怎么处理？</dt>
+                <dd>可以发送邮件到上方客服邮箱说明情况，我们会协助双方沟通，并视情况下架违规商品。</dd>
+            </dl>
+
+        </div>
+
+    </main>
+
+    <!-- ==================== 页脚 ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <p>校园二手交易平台 2026</p>
+        </div>
+    </footer>
+
+    <button class="back-top" id="backTop">↑</button>
+
+    <script src="js/main.js"></script>
+
+    <!-- 内部 JavaScript：手机端汉堡菜单展开 / 收起 -->
+    <script>
+        // 知识点：DOM 操作、事件监听、classList（教材 P216、P278）
+        var navToggle = document.getElementById("navToggle");
+        var nav = document.getElementById("nav");
+        if (navToggle && nav) {
+            navToggle.addEventListener("click", function () {
+                nav.classList.toggle("open");
+            });
+        }
+    </script>
+</body>
+</html>

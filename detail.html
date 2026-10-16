@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品详情 - 校园二手交易平台</title>
+    <!-- 外部样式文件（知识点：外部样式表，教材 P48） -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 响应式样式（知识点：媒体查询，教材 P323） -->
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- ==================== 页眉 + 导航（知识点：超链接导航，教材 P23）==================== -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">校园<span>二手</span>交易平台</a>
+            <nav class="nav" id="nav">
+                <a href="index.html">首页</a>
+                <a href="list.html" class="active">商品列表</a>       <!-- 所属栏目高亮 -->
+                <a href="publish.html">发布商品</a>
+                <a href="about.html">关于我们</a>
+                <a href="login.html">登录</a>
+            </nav>
+            <button class="nav-toggle" id="navToggle">&#9776;</button>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- ==================== 面包屑导航 ==================== -->
+        <div class="breadcrumb">
+            <a href="index.html">首页</a> <span>/</span>
+            <a href="list.html">商品列表</a> <span>/</span>
+            <em>商品详情</em>
+        </div>
+
+        <!-- ==================== 商品详情：左图右信息 ====================
+             知识点：grid 网格布局（教材 P360）、图像 img（教材 P29） -->
+        <div class="detail-wrap">
+
+            <!-- 左栏：商品大图 -->
+            <div>
+                <img class="detail-img" src="images/goods1.jpg" alt="高等数学（第七版）上下册">
+            </div>
+
+            <!-- 右栏：商品信息 -->
+            <div class="detail-info">
+                <h2>高等数学（第七版）上下册 九成新</h2>
+
+                <span class="tag">教材书籍</span>
+                <span class="tag">可小刀</span>
+                <span class="tag">同校当面交易</span>
+
+                <!-- 价格区：知识点 文本样式（教材 P62） -->
+                <div class="detail-price">
+                    <strong>￥25</strong>
+                    <span class="card-old">原价 ￥68</span>
+                    <div class="tip">看货满意再付款，支持当面验书</div>
+                </div>
+
+                <!-- ==================== 商品参数：定义列表 dl / dt / dd ====================
+                     知识点：定义列表，教材 P23（任务 2-2） -->
+                <dl class="param-list clearfix">
+                    <dt>分类</dt>
+                    <dd>教材书籍 / 高等数学</dd>
+
+                    <dt>成色</dt>
+                    <dd>九成新</dd>
+
+                    <dt>原价</dt>
+                    <dd>￥68.00</dd>
+
+                    <dt>交易地点</dt>
+                    <dd>江苏海洋大学 苍梧校区 图书馆一楼大厅</dd>
+
+                    <dt>发布时间</dt>
+                    <dd>2026-10-06 19:20</dd>
+
+                    <dt>新旧程度</dt>
+                    <dd>无缺页、无破损，扉页有几页铅笔笔记</dd>
+
+                    <dt>是否可小刀</dt>
+                    <dd>可小刀，价格好商量</dd>
+
+                    <dt>联系方式</dt>
+                    <dd>QQ 123456789（加好友请备注“买教材”）</dd>
+                </dl>
+
+                <!-- 数量选择 + 联系卖家按钮
+                     知识点：下拉列表 select（教材 P164）、按钮 button -->
+                <div class="buy-bar">
+                    <label for="qty">数量：</label>
+                    <select id="qty" name="qty">
+                        <option value="1">1 件</option>
+                        <option value="2">2 件</option>
+                        <option value="3">3 件</option>
+                        <option value="4">4 件</option>
+                        <option value="5">5 件</option>
+                    </select>
+                    <button class="btn btn-green" type="button">立即联系卖家</button>
+                </div>
+
+                <!-- 卖家信息卡片（本页专用样式见页面底部 <style>） -->
+                <div class="seller-card">
+                    <img src="images/avatar1.jpg" alt="卖家头像">
+                    <div>
+                        <div class="seller-name">小海豚在卖书</div>
+                        <div class="seller-sub">计算机工程学院 · 软件工程1251</div>
+                        <div class="seller-sub">信用分 <span class="credit">98</span> 分 · 已成交 27 笔 · 好评率 100%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 留言区 ====================
+             知识点：表单 form + 多行文本域 textarea（教材 P161、P164） -->
+        <div class="comment-box">
+            <h3>留言咨询</h3>
+            <form action="#" method="post">
+                <div class="form-item">
+                    <label for="comment">我要留言 <em>*</em></label>
+                    <textarea id="comment" name="comment" placeholder="例如：同学你好，这本书还有吗？能便宜点吗？约在图书馆几点见面？"></textarea>
+                    <p class="tip">留言请文明用语，交易前不要向陌生人提前转账</p>
+                </div>
+                <button class="btn" type="submit">提交留言</button>
+            </form>
+
+            <!-- 已有留言 -->
+            <div class="comment-list">
+                <div class="comment">
+                    <div class="c-head">
+                        <span class="c-name">爱吃辣的小王</span>
+                        <span class="c-time">2026-10-07 09:12</span>
+                    </div>
+                    <p class="c-text">同学你好，这本书还有吗？我只要上册可以吗？</p>
+                </div>
+
+                <div class="comment">
+                    <div class="c-head">
+                        <span class="c-name">图书馆常驻选手</span>
+                        <span class="c-time">2026-10-07 12:40</span>
+                    </div>
+                    <p class="c-text">我也想要，请问上门有笔记的那几页能拍张照片看看吗？</p>
+                </div>
+
+                <div class="comment">
+                    <div class="c-head">
+                        <span class="c-name">小海豚在卖书</span>
+                        <span class="c-time">2026-10-07 13:05</span>
+                    </div>
+                    <p class="c-text">都在的，两本一起出更便宜，下午三点到五点我在图书馆一楼，可以直接来看书。</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ==================== 页脚 ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <p>校园二手交易平台 2026</p>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮（知识点：固定定位 position: fixed，教材 P104，由 main.js 控制显示） -->
+    <button class="back-top" id="backTop">↑</button>
+
+    <!-- 外部 JavaScript 文件（知识点：外部 JS，教材 P205） -->
+    <script src="js/main.js"></script>
+
+    <!-- ============================================================
+         本页专用样式（写在页面底部，不改动 css/style.css）
+         知识点：盒子模型 border/padding/margin（教材 P87）、
+                 CSS3 圆角 + 阴影（教材 P129）、flex 弹性布局（教材 P327）
+         ============================================================ -->
+    <style>
+        /* 面包屑导航：本页多一级“商品详情” */
+        .breadcrumb {
+            padding: 18px 0 2px;
+            color: #7a6a55;
+            font-size: 13px;
+        }
+        .breadcrumb a { color: #9e2b25; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb em { color: #4a3b2a; font-style: normal; }
+
+        /* 数量选择 + 联系卖家按钮：知识点 flex 弹性布局（教材 P327） */
+        .buy-bar {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 20px 0 8px;
+        }
+        .buy-bar label { color: #4a3b2a; font-weight: bold; }
+        .buy-bar select {
+            padding: 10px 14px;
+            border: 1px solid #d8cdb8;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #2b2b2b;
+            outline: none;
+            transition: all 0.3s;
+        }
+        .buy-bar select:focus {                    /* 伪类选择器，教材 P54 */
+            border-color: #9e2b25;
+            box-shadow: 0 0 0 3px rgba(158, 43, 37, 0.12);
+        }
+
+        /* 卖家信息卡片：知识点 盒子模型（教材 P87）+ CSS3 圆角阴影（教材 P129） */
+        .seller-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background-color: #faf5ea;
+            border: 1px solid #ded3ba;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 18px 0 4px;
+        }
+        .seller-card img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;                    /* 圆形头像 */
+            border: 3px solid #e0d5bd;
+            object-fit: cover;
+        }
+        .seller-card .seller-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #9e2b25;
+        }
+        .seller-card .seller-sub { font-size: 12px; color: #8c8578; }
+        .seller-card .credit { color: #c0392b; font-weight: bold; }
+
+        /* 留言区 */
+        .comment-box {
+            background-color: #fffdf7;
+            border-radius: 12px;
+            padding: 30px 40px;
+            margin-top: 24px;
+        }
+        .comment-box h3 {
+            color: #4a3b2a;
+            margin-bottom: 16px;
+            padding-left: 14px;
+            border-left: 5px solid #7a6a55;
+        }
+        .comment-list { margin-top: 22px; }
+        .comment {
+            padding: 16px 0;
+            border-top: 1px dashed #ded3ba;        /* 虚线上分隔线 */
+        }
+        .comment:first-child { border-top: none; }
+        .comment .c-head {
+            display: flex;
+            justify-content: space-between;        /* 昵称和时间一左一右 */
+            margin-bottom: 6px;
+        }
+        .comment .c-name { color: #9e2b25; font-weight: bold; }
+        .comment .c-time { color: #8c8578; font-size: 12px; }
+        .comment .c-text { color: #4a3b2a; }
+    </style>
+</body>
+</html>

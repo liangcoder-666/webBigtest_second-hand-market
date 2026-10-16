@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发布商品 - 校园二手交易平台</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- 内部样式：本页专用（左表单 + 右须知 两栏布局），不改动 css/style.css
+         知识点：grid 网格布局（教材 P360） -->
+    <style>
+        .publish-wrap {
+            display: grid;
+            grid-template-columns: 1fr 320px;    /* 左宽右窄两栏 */
+            gap: 26px;
+            align-items: start;
+            margin-top: 26px;
+        }
+        .publish-wrap .form-box { margin: 0; }
+        .publish-side { position: sticky; top: 92px; }
+        .publish-side .notice { margin-top: 0; }
+        /* 文件选择框默认没被 style.css 覆盖，这里补一下 */
+        .form-item input[type="file"] {
+            width: 100%;
+            padding: 9px 14px;
+            border: 1px dashed #d8cdb8;
+            border-radius: 8px;
+            background-color: #faf5ea;
+            font-size: 13px;
+            font-family: inherit;
+            color: #4a3b2a;
+        }
+        .form-btns { margin-top: 26px; }
+        .form-btns .btn + .btn { margin-left: 12px; }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== 页眉 + 导航 ==================== -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">校园<span>二手</span>交易平台</a>
+            <nav class="nav" id="nav">
+                <a href="index.html">首页</a>
+                <a href="list.html">商品列表</a>
+                <a href="publish.html" class="btn-publish active">发布商品</a>
+                <a href="about.html">关于我们</a>
+                <a href="login.html">登录</a>
+            </nav>
+            <button class="nav-toggle" id="navToggle">&#9776;</button>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <h2 class="section-title mt40">发布商品</h2>
+        <p class="section-sub">填好下面的信息，你的闲置就能出现在同学面前</p>
+
+        <div class="publish-wrap">
+
+            <!-- ==================== 左侧：发布表单 ====================
+                 知识点：表单 form 与表单控件（教材 P161、P164）
+                 知识点：表单样式设计（教材 P182 任务5-3） -->
+            <form class="form-box" action="#" method="post" enctype="multipart/form-data">
+
+                <!-- 文本框 input type="text"（教材 P164） -->
+                <div class="form-item">
+                    <label for="title">商品标题 <em>*</em></label>
+                    <input type="text" id="title" name="title" maxlength="40"
+                           placeholder="例如：高等数学（第七版）上下册 九成新">
+                    <p class="tip">标题写清楚「书名 / 型号 + 新旧程度」，更容易被同学搜到</p>
+                </div>
+
+                <!-- 数字输入框 input type="number" -->
+                <div class="form-item">
+                    <label for="price">出售价格（元） <em>*</em></label>
+                    <input type="number" id="price" name="price" min="0" step="0.01"
+                           placeholder="例如：25">
+                    <p class="tip">单位为元，填写你期望的成交价，支持两位小数</p>
+                </div>
+
+                <!-- 下拉列表框 select + option（教材 P164） -->
+                <div class="form-item">
+                    <label for="cate">商品分类 <em>*</em></label>
+                    <select id="cate" name="cate">
+                        <option value="">-- 请选择商品分类 --</option>
+                        <option value="教材书籍">教材书籍</option>
+                        <option value="数码电子">数码电子</option>
+                        <option value="代步工具">代步工具</option>
+                        <option value="宿舍用品">宿舍用品</option>
+                        <option value="服装鞋帽">服装鞋帽</option>
+                        <option value="其他闲置">其他闲置</option>
+                    </select>
+                    <p class="tip">分类选得准，商品才会出现在首页对应的分类入口里</p>
+                </div>
+
+                <!-- 下拉列表框：新旧程度 -->
+                <div class="form-item">
+                    <label for="cond">新旧程度 <em>*</em></label>
+                    <select id="cond" name="cond">
+                        <option value="全新">全新</option>
+                        <option value="九成新" selected>九成新</option>
+                        <option value="七成新">七成新</option>
+                        <option value="有使用痕迹">有使用痕迹</option>
+                    </select>
+                    <p class="tip">请如实填写，避免交易时产生纠纷</p>
+                </div>
+
+                <!-- 单选按钮组 input type="radio" -->
+                <div class="form-item">
+                    <label>交易方式 <em>*</em></label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="deal" value="校内当面交易" checked> 校内当面交易</label>
+                        <label><input type="radio" name="deal" value="快递包邮"> 快递包邮</label>
+                    </div>
+                    <p class="tip">校内当面交易不收运费，建议同校同学优先选择</p>
+                </div>
+
+                <!-- 复选框组 input type="checkbox" -->
+                <div class="form-item">
+                    <label>商品标签</label>
+                    <div class="check-group">
+                        <label><input type="checkbox" name="tags" value="可小刀"> 可小刀</label>
+                        <label><input type="checkbox" name="tags" value="可议价"> 可议价</label>
+                        <label><input type="checkbox" name="tags" value="毕业甩卖"> 毕业甩卖</label>
+                        <label><input type="checkbox" name="tags" value="急出"> 急出</label>
+                    </div>
+                    <p class="tip">最多选 2 个，标签会显示在商品卡片上</p>
+                </div>
+
+                <!-- 文本框：联系方式 -->
+                <div class="form-item">
+                    <label for="phone">联系方式（手机号） <em>*</em></label>
+                    <input type="text" id="phone" name="phone" maxlength="11"
+                           placeholder="请输入 11 位手机号">
+                    <p class="tip">仅对已登录用户可见，请填写常用手机号</p>
+                </div>
+
+                <!-- 文件域 input type="file"，需要表单设置 enctype="multipart/form-data" -->
+                <div class="form-item">
+                    <label for="pic">上传商品图片</label>
+                    <input type="file" id="pic" name="pic" accept="image/*">
+                    <p class="tip">支持 jpg / png 格式，建议上传真实照片，最多 3 张</p>
+                </div>
+
+                <!-- 多行文本域 textarea -->
+                <div class="form-item">
+                    <label for="desc">商品描述 <em>*</em></label>
+                    <textarea id="desc" name="desc"
+                              placeholder="介绍一下商品的使用情况、购买时间、是否有配件等，例如：大一到大二用过的教材，书角有轻微折痕，内页干净无笔记。"></textarea>
+                    <p class="tip">描述越详细，成交越快</p>
+                </div>
+
+                <!-- 复选框：同意交易规则 -->
+                <div class="form-item">
+                    <div class="check-group">
+                        <label><input type="checkbox" id="agree" name="agree" value="1"> 我已阅读并同意《校园二手交易规则》 <em>*</em></label>
+                    </div>
+                    <p class="tip">同意后才能点击下面的「立即发布」按钮</p>
+                </div>
+
+                <!-- 提交按钮 input type="submit" 与重置按钮 -->
+                <div class="form-btns">
+                    <input type="submit" class="btn btn-green" value="立即发布">
+                    <input type="reset" class="btn" value="重新填写">
+                </div>
+
+            </form>
+
+            <!-- ==================== 右侧：发布须知 ==================== -->
+            <aside class="publish-side">
+                <div class="notice">
+                    <h4>◆ 发布须知</h4>
+                    <ul>
+                        <li>· 只发布自己的闲置物品，禁止代购、微商广告</li>
+                        <li>· 图片必须是实物拍摄，网图会被下架</li>
+                        <li>· 交易请在校内公共场所当面完成，不要提前转账</li>
+                        <li>· 教材、自行车、宿舍小家电是最好卖的品类</li>
+                        <li>· 一件商品只能发布一次，重复发布将做合并处理</li>
+                    </ul>
+                </div>
+
+                <div class="notice" style="border-left-color:#9e2b25; background-color:#faf5ea; color:#2c5282;">
+                    <h4> 发布小技巧</h4>
+                    <ul>
+                        <li>· 价格比原价低 5~7 成最容易成交</li>
+                        <li>· 标题里带上「可小刀」能提高点击率</li>
+                        <li>· 晚上 20:00—22:00 发布浏览量最高</li>
+                    </ul>
+                </div>
+            </aside>
+
+        </div>
+
+    </main>
+
+    <!-- ==================== 页脚 ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <p>校园二手交易平台 2026</p>
+        </div>
+    </footer>
+
+    <button class="back-top" id="backTop">↑</button>
+
+    <script src="js/main.js"></script>
+
+    <!-- 内部 JavaScript：提交前的简单检查（教材 P257、P278） -->
+    <script>
+        // 知识点：DOM 元素获取、事件与 if 控制流程（教材 P257、P278、P216）
+        var form = document.querySelector(".form-box");
+        form.onsubmit = function () {
+            var title = document.getElementById("title").value;   // 商品标题
+            var price = document.getElementById("price").value;   // 价格
+            var phone = document.getElementById("phone").value;   // 手机号
+            var agree = document.getElementById("agree").checked; // 是否同意规则
+
+            // 逐个判断，只要有一个不满足就用 alert 提醒并阻止提交
+            if (title === "") {
+                alert("请填写商品标题！");
+                return false;
+            }
+            if (price === "" || price <= 0) {
+                alert("请填写正确的出售价格！");
+                return false;
+            }
+            if (phone === "") {
+                alert("请填写联系方式！");
+                return false;
+            }
+            if (!agree) {
+                alert("请先勾选「我已阅读并同意《校园二手交易规则》」！");
+                return false;
+            }
+
+            alert("发布成功！你的商品将出现在「商品列表」中。");
+            return false;   // 课程作业没有后台服务器，这里阻止真正提交
+        };
+    </script>
+</body>
+</html>

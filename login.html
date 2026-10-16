@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 / 注册 - 校园二手交易平台</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- 内部样式：本页专用（登录框居中、标签页切换），不改动 css/style.css
+         知识点：盒子的宽高与 margin auto 居中（教材 P87） -->
+    <style>
+        .login-wrap {
+            width: 460px;                 /* 登录框宽度约 460px */
+            margin: 40px auto 60px;       /* 上下留白 + 水平居中 */
+        }
+        .login-title {
+            text-align: center;
+            font-size: 24px;
+            color: #4a3b2a;
+            margin-bottom: 6px;
+        }
+        .login-sub {
+            text-align: center;
+            color: #8c8578;
+            font-size: 13px;
+            margin-bottom: 22px;
+        }
+        /* 标签页按钮：flex 平均分配 */
+        .login-tabs {
+            display: flex;
+            border-bottom: 2px solid #ded3ba;
+            margin-bottom: 20px;
+        }
+        .login-tabs .tab-btn {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            cursor: pointer;
+            color: #4a3b2a;
+            font-weight: bold;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.3s;
+        }
+        .login-tabs .tab-btn.on {
+            color: #9e2b25;
+            border-bottom-color: #9e2b25;
+        }
+        .login-wrap .form-box { margin: 0; }
+        .panel { display: none; }         /* 默认隐藏，由 JS 控制显示 */
+        .panel.on { display: block; }
+        .login-tip-bottom {
+            text-align: center;
+            color: #8c8578;
+            font-size: 12px;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== 页眉 + 导航 ==================== -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">校园<span>二手</span>交易平台</a>
+            <nav class="nav" id="nav">
+                <a href="index.html">首页</a>
+                <a href="list.html">商品列表</a>
+                <a href="publish.html">发布商品</a>
+                <a href="about.html">关于我们</a>
+                <a href="login.html" class="active">登录</a>
+            </nav>
+            <button class="nav-toggle" id="navToggle">&#9776;</button>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <div class="login-wrap">
+
+            <h2 class="login-title mt40">欢迎回来</h2>
+            <p class="login-sub">登录后可发布商品、收藏闲置，也能直接联系卖家</p>
+
+            <!-- 标签页：登录 / 注册，点击调用内部 JS 的 switchTab() 切换 -->
+            <div class="login-tabs">
+                <a class="tab-btn on" id="tabLogin" onclick="return switchTab('login')">登录</a>
+                <a class="tab-btn" id="tabReg" onclick="return switchTab('reg')">注册</a>
+            </div>
+
+            <!-- ==================== 登录面板 ====================
+                 知识点：表单控件 input（教材 P161、P164）、表单样式设计（教材 P182） -->
+            <div class="panel on" id="loginPanel">
+                <form class="form-box" action="#" method="post" onsubmit="return checkLogin();">
+
+                    <div class="form-item">
+                        <label for="loginPhone">手机号 <em>*</em></label>
+                        <input type="text" id="loginPhone" name="phone" maxlength="11"
+                               placeholder="请输入 11 位手机号">
+                        <!-- 验证提示：默认灰色，校验后由 JS 改成 .tip.ok / .tip.error -->
+                        <p class="tip" id="loginPhoneTip">手机号必须为 1 开头的 11 位数字</p>
+                    </div>
+
+                    <div class="form-item">
+                        <label for="loginPwd">密码 <em>*</em></label>
+                        <input type="password" id="loginPwd" name="pwd" maxlength="16"
+                               placeholder="请输入 6~16 位密码">
+                        <p class="tip" id="loginPwdTip">密码长度为 6~16 位</p>
+                    </div>
+
+                    <div class="form-item">
+                        <input type="submit" class="btn" value="登 录">
+                    </div>
+
+                    <p class="login-tip-bottom">忘记密码？可携带学生证到信息服务台重置</p>
+                </form>
+            </div>
+
+            <!-- ==================== 注册面板 ====================
+                 默认隐藏，点上面的「注册」标签才显示 -->
+            <div class="panel" id="regPanel">
+                <form class="form-box" action="#" method="post" onsubmit="return checkReg();">
+
+                    <div class="form-item">
+                        <label for="regPhone">手机号 <em>*</em></label>
+                        <input type="text" id="regPhone" name="phone" maxlength="11"
+                               placeholder="请输入 11 位手机号">
+                        <p class="tip" id="regPhoneTip">手机号必须为 1 开头的 11 位数字</p>
+                    </div>
+
+                    <div class="form-item">
+                        <label for="regPwd">设置密码 <em>*</em></label>
+                        <input type="password" id="regPwd" name="pwd" maxlength="16"
+                               placeholder="请输入 6~16 位密码">
+                        <p class="tip" id="regPwdTip">密码长度为 6~16 位，建议字母加数字</p>
+                    </div>
+
+                    <div class="form-item">
+                        <label for="regPwd2">确认密码 <em>*</em></label>
+                        <input type="password" id="regPwd2" name="pwd2" maxlength="16"
+                               placeholder="请再次输入密码">
+                        <p class="tip" id="regPwd2Tip">两次输入的密码必须一致</p>
+                    </div>
+
+                    <!-- 下拉列表：邀请方式 -->
+                    <div class="form-item">
+                        <label for="regFrom">邀请方式</label>
+                        <select id="regFrom" name="from">
+                            <option value="同学推荐">同学推荐</option>
+                            <option value="校园群">校园群</option>
+                            <option value="朋友圈">朋友圈</option>
+                            <option value="其他">其他</option>
+                        </select>
+                        <p class="tip">选填，方便我们知道大家是怎么找到平台的</p>
+                    </div>
+
+                    <div class="form-item">
+                        <input type="submit" class="btn btn-green" value="立即注册">
+                    </div>
+
+                    <p class="login-tip-bottom">注册即表示同意《校园二手交易规则》与《用户协议》</p>
+                </form>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- ==================== 页脚 ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <p>校园二手交易平台 2026</p>
+        </div>
+    </footer>
+
+    <button class="back-top" id="backTop">↑</button>
+
+    <script src="js/main.js"></script>
+
+    <!-- ============================================================
+         内部 JavaScript：登录 / 注册表单验证
+         知识点：正则表达式与控制流程，教材 P216、P223
+         知识点：DOM 元素获取与事件，教材 P257
+         ============================================================ -->
+    <script>
+        // 【正则表达式，教材 P223】手机号规则：1 开头，第 2 位 3~9，后面还有 9 位数字
+        var PHONE_REG = /^1[3-9]\d{9}$/;
+        // 密码长度要求：6~16 位
+        var PWD_MIN = 6;
+        var PWD_MAX = 16;
+
+        // 统一显示提示：ok 为 true 就显示绿色（.tip.ok），否则显示红色（.tip.error）
+        // 知识点：字符串拼接与 DOM 操作（教材 P216、P257）
+        function showTip(id, ok, msg) {
+            var el = document.getElementById(id);
+            el.innerHTML = msg;
+            el.className = ok ? "tip ok" : "tip error";
+        }
+
+        // 切换登录 / 注册两个标签页
+        // 知识点：if...else 分支控制流程，教材 P216
+        function switchTab(tab) {
+            var loginPanel = document.getElementById("loginPanel");
+            var regPanel   = document.getElementById("regPanel");
+            var tabLogin   = document.getElementById("tabLogin");
+            var tabReg     = document.getElementById("tabReg");
+
+            if (tab === "login") {
+                loginPanel.className = "panel on";
+                regPanel.className   = "panel";
+                tabLogin.className   = "tab-btn on";
+                tabReg.className     = "tab-btn";
+            } else {
+                loginPanel.className = "panel";
+                regPanel.className   = "panel on";
+                tabLogin.className   = "tab-btn";
+                tabReg.className     = "tab-btn on";
+            }
+            return false;   // 返回 false，阻止 <a> 标签跳转
+        }
+
+        // ---------------- 登录表单验证 ----------------
+        function checkLogin() {
+            var phone = document.getElementById("loginPhone").value;
+            var pwd   = document.getElementById("loginPwd").value;
+            var pass  = true;   // 标记是否全部通过
+
+            // 1. 校验手机号：用正则 test() 方法判断（教材 P223）
+            if (PHONE_REG.test(phone)) {
+                showTip("loginPhoneTip", true, "√ 手机号格式正确");
+            } else {
+                showTip("loginPhoneTip", false, "× 请输入 11 位有效手机号");
+                pass = false;
+            }
+
+            // 2. 校验密码长度：必须 6~16 位（逻辑与 &&）
+            if (pwd.length >= PWD_MIN && pwd.length <= PWD_MAX) {
+                showTip("loginPwdTip", true, "√ 密码长度符合要求");
+            } else {
+                showTip("loginPwdTip", false, "× 密码长度须为 6~16 位");
+                pass = false;
+            }
+
+            if (pass) {
+                alert("登录校验通过，正在进入首页……");
+            }
+            return false;   // 课程作业没有后台服务器，阻止表单真正提交
+        }
+
+        // ---------------- 注册表单验证 ----------------
+        function checkReg() {
+            var phone = document.getElementById("regPhone").value;
+            var pwd   = document.getElementById("regPwd").value;
+            var pwd2  = document.getElementById("regPwd2").value;
+            var pass  = true;
+
+            // 1. 校验手机号（正则表达式，教材 P223）
+            if (PHONE_REG.test(phone)) {
+                showTip("regPhoneTip", true, "√ 手机号格式正确");
+            } else {
+                showTip("regPhoneTip", false, "× 请输入 11 位有效手机号");
+                pass = false;
+            }
+
+            // 2. 校验密码长度
+            if (pwd.length >= PWD_MIN && pwd.length <= PWD_MAX) {
+                showTip("regPwdTip", true, "√ 密码长度符合要求");
+            } else {
+                showTip("regPwdTip", false, "× 密码长度须为 6~16 位");
+                pass = false;
+            }
+
+            // 3. 校验两次密码是否一致（字符串相等比较）
+            if (pwd2 === "") {
+                showTip("regPwd2Tip", false, "× 请再次输入密码");
+                pass = false;
+            } else if (pwd2 === pwd) {
+                showTip("regPwd2Tip", true, "√ 两次输入的密码一致");
+            } else {
+                showTip("regPwd2Tip", false, "× 两次输入的密码不一致");
+                pass = false;
+            }
+
+            if (pass) {
+                alert("注册成功！请使用刚才的手机号登录。");
+            }
+            return false;   // 阻止表单真正提交
+        }
+
+        // 页面打开时默认显示「登录」标签（教材 P257 DOM 操作）
+        window.onload = function () {
+            switchTab("login");
+        };
+    </script>
+</body>
+</html>

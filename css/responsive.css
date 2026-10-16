@@ -1,0 +1,218 @@
+/* ============================================================
+   响应式样式表 responsive.css
+   ------------------------------------------------------------
+   ★ 本文件是【响应式布局样式表】，专门负责在不同屏幕尺寸下调整页面
+   ★ 教材参考：项目8 响应式网页设计（P319 起）
+     知识点①：媒体查询 @media（教材 P323 任务8-2）
+     知识点②：弹性布局 flex（教材 P327 任务8-3）
+     知识点③：网格布局 grid 列数变化（教材 P360 任务9-1）
+   ------------------------------------------------------------
+   断点说明（由大到小，后面的会覆盖前面的）：
+     1. max-width: 1240px —— 平板 / 小笔记本
+     2. max-width: 768px  —— 手机横屏 / 小平板
+     3. max-width: 480px  —— 手机竖屏
+   ★ 注意：本文件不修改任何颜色、字体等基础外观，只调整布局。
+   ============================================================ */
+
+
+/* ============================================================
+   断点一：中屏（≤1240px）平板 / 小笔记本
+   原因：默认版心宽 1200px，在 1200px 上下的屏幕上会贴边，
+        所以把版心改成 96% 让它左右留出空隙；同时卡片列数减一，
+        避免卡片被压得太窄、文字挤成一条。
+   ============================================================ */
+@media screen and (max-width: 1240px) {
+
+    /* 版心由固定 1200px 改为相对宽度 96%，自适应屏幕 */
+    .container {
+        width: 96%;
+    }
+
+    /* 商品网格：一排从 4 个变 3 个（4 列在大屏幕上会显得太挤）*/
+    .goods-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* 分类网格：一排从 6 个变 4 个（6 列在小一点的屏幕上图标过密）*/
+    .cate-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* 团队网格：一排从 4 个变 3 个，保持成员卡片宽度舒适 */
+    .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* 商品详情页：左图宽度由 480px 收窄到 360px，
+       给右侧文字信息留出更多空间，避免文字换行过多 */
+    .detail-wrap {
+        grid-template-columns: 360px 1fr;
+    }
+}
+
+
+/* ============================================================
+   断点二：小屏（≤768px）手机横屏 / 小平板
+   原因：屏幕变窄，横向排列的导航放不下，需要改成上下结构，
+        并把导航折叠成汉堡菜单，点击按钮才展开；
+        各种网格列数继续减少，字体和留白同步收小，方便手指点击。
+   ============================================================ */
+@media screen and (max-width: 768px) {
+
+    /* ---------- 页眉：由横向排列改成纵向排列 ---------- */
+    .header-inner {
+        height: auto;                      /* 高度改成自适应，不再固定 72px */
+        flex-direction: column;            /* 纵向排列：logo 在上、导航在下 */
+        align-items: flex-start;
+        padding: 12px 0;                   /* 上下留一点内边距 */
+        position: relative;                /* 给右上角的汉堡按钮做定位父级 */
+    }
+
+    /* ---------- 导航：默认收起，点击汉堡按钮才展开 ---------- */
+    .nav {
+        display: none;                     /* 默认隐藏，避免占满屏幕 */
+        width: 100%;
+    }
+    /* 加了 .open 类之后才显示（由 js 点击汉堡按钮切换） */
+    .nav.open {
+        display: flex;
+        flex-wrap: wrap;                   /* 项太多时自动换行 */
+        justify-content: center;
+        margin-top: 10px;
+    }
+    /* 导航链接在手机上加大点击区域、间距缩小一点 */
+    .nav a {
+        margin: 4px 3px;
+        padding: 8px 14px;
+    }
+
+    /* ---------- 汉堡按钮：小屏才显示出来 ---------- */
+    .nav-toggle {
+        display: block;
+        position: absolute;                /* 固定在页眉右上角、logo 右侧 */
+        right: 0;
+        top: 14px;
+    }
+
+    /* ---------- 内容网格：列数继续减少 ---------- */
+    .goods-grid {
+        grid-template-columns: repeat(2, 1fr);   /* 商品 2 列 */
+        gap: 16px;
+    }
+    .cate-grid {
+        grid-template-columns: repeat(3, 1fr);   /* 分类 3 列 */
+        gap: 12px;
+    }
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);   /* 团队 2 列 */
+        gap: 16px;
+    }
+    /* 排行榜：由两列改成一列，避免条目文字被压断 */
+    .rank {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        padding: 20px 20px;
+    }
+
+    /* ---------- 商品详情：左右布局改成上下单列 ---------- */
+    .detail-wrap {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    /* ---------- 巨幕轮播：变矮、文字变大变位置 ---------- */
+    .banner {
+        height: 260px;                     /* 高度由 380px 改小，避免占屏太多 */
+    }
+    .banner-text {
+        left: 20px;                        /* 文字离左边近一点 */
+        bottom: 26px;
+    }
+    .banner-text h2 {
+        font-size: 24px;                   /* 标题字号缩小 */
+    }
+    .banner-text p {
+        font-size: 13px;                   /* 副标题字号缩小 */
+    }
+
+    /* ---------- 关于我们：正文卡片内边距缩小 ---------- */
+    .about-box {
+        padding: 24px 20px;
+    }
+
+    /* ---------- 通用标题：字号和上下间距略收 ---------- */
+    .section-title {
+        font-size: 22px;
+        margin: 32px 0 6px;
+    }
+    .section-sub {
+        margin-bottom: 22px;
+    }
+}
+
+
+/* ============================================================
+   断点三：超小屏（≤480px）手机竖屏
+   原因：屏幕只有几百像素宽，网格最多只能放 1~2 列，
+        字号、内边距、按钮尺寸都要再收小，保证内容不溢出、不横向滚动。
+   ============================================================ */
+@media screen and (max-width: 480px) {
+
+    /* ---------- 内容网格：回到单列 / 两列 ---------- */
+    .goods-grid {
+        grid-template-columns: 1fr;             /* 商品 1 列，一屏看一个 */
+        gap: 14px;
+    }
+    .cate-grid {
+        grid-template-columns: repeat(2, 1fr);  /* 分类 2 列 */
+        gap: 10px;
+    }
+    .team-grid {
+        grid-template-columns: 1fr;             /* 团队 1 列 */
+        gap: 14px;
+    }
+
+    /* ---------- 巨幕轮播：更矮、标题再小 ---------- */
+    .banner {
+        height: 200px;                     /* 高度再降到 200px */
+    }
+    .banner-text {
+        left: 16px;
+        bottom: 18px;
+    }
+    .banner-text h2 {
+        font-size: 19px;                   /* 标题字号再缩小 */
+        letter-spacing: 0;
+    }
+    .banner-text p {
+        font-size: 12px;
+    }
+    /* 箭头和圆点在小屏上藏起来，避免挡住文字 */
+    .banner-dots {
+        right: 16px;
+        bottom: 16px;
+    }
+
+    /* ---------- 表单：内边距缩小，避免输入框被挤扁 ---------- */
+    .form-box {
+        padding: 22px 18px;
+    }
+
+    /* ---------- 分页：按钮内边距缩小，一行能放下更多页码 ---------- */
+    .pager a {
+        padding: 6px 10px;
+        margin: 0 2px;
+        font-size: 13px;
+    }
+
+    /* ---------- 关于我们：卡片内边距再收一点 ---------- */
+    .about-box {
+        padding: 18px 15px;
+    }
+
+    /* ---------- 通用标题：字号进一步缩小 ---------- */
+    .section-title {
+        font-size: 19px;
+    }
+}
