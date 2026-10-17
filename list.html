@@ -115,125 +115,13 @@
         <!-- ==================== 商品卡片网格 ====================
              知识点：grid 网格布局（教材 P360）、盒子模型（教材 P87）
                       图像 img + alt（教材 P29） -->
-        <div class="goods-grid">
-
-            <!-- 商品1：教材书籍 -->
-            <div class="card">
-                <a href="detail.html"><img class="card-img" src="images/goods1.jpg" alt="高等数学教材"></a>
-                <div class="card-body">
-                    <div class="card-title"><a href="detail.html">高等数学（第七版）上下册 九成新</a></div>
-                    <span class="tag">教材书籍</span><span class="tag">可小刀</span>
-                    <div class="card-meta">
-                        <span class="card-price">￥25<small> 原价 ￥68</small></span>
-                        <span>图书馆交易</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 商品2：数码电子 -->
-            <div class="card">
-                <a href="detail.html"><img class="card-img" src="images/goods2.jpg" alt="罗技无线鼠标"></a>
-                <div class="card-body">
-                    <div class="card-title"><a href="detail.html">罗技无线鼠标 M185 用了半年 功能正常</a></div>
-                    <span class="tag">数码电子</span>
-                    <div class="card-meta">
-                        <span class="card-price">￥35<small> 原价 ￥89</small></span>
-                        <span>当面交易</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 商品3：代步工具 -->
-            <div class="card">
-                <a href="detail.html"><img class="card-img" src="images/goods3.jpg" alt="捷安特山地自行车"></a>
-                <div class="card-body">
-                    <div class="card-title"><a href="detail.html">捷安特山地车 21 速 毕业出 送车锁</a></div>
-                    <span class="tag">代步工具</span><span class="tag">毕业甩卖</span>
-                    <div class="card-meta">
-                        <span class="card-price">￥260<small> 原价 ￥980</small></span>
-                        <span>宿舍楼下交易</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 商品4：宿舍用品 -->
-            <div class="card">
-                <a href="detail.html"><img class="card-img" src="images/goods4.jpg" alt="宿舍护眼台灯"></a>
-                <div class="card-body">
-                    <div class="card-title"><a href="detail.html">宿舍护眼台灯 三档调光 带 USB 充电口</a></div>
-                    <span class="tag">宿舍用品</span>
-                    <div class="card-meta">
-                        <span class="card-price">￥18<small> 原价 ￥49</small></span>
-                        <span>当面交易</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 商品5：数码电子 -->
-            <div class="card">
-                <a href="detail.html"><img class="card-img" src="images/goods5.jpg" alt="黑爵机械键盘"></a>
-                <div class="card-body">
-                    <div class="card-title"><a href="detail.html">黑爵机械键盘 青轴 87 键 送拔键器</a></div>
-                    <span class="tag">数码电子</span><span class="tag">可小刀</span>
-                    <div class="card-meta">
-                        <span class="card-price">￥88<small> 原价 ￥199</small></span>
-                        <span>当面交易</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 商品6：教材书籍 -->
-            <div class="card">
-                <a href="detail.html"><img class="card-img" src="images/goods6.jpg" alt="英语四六级真题资料"></a>
-                <div class="card-body">
-                    <div class="card-title"><a href="detail.html">英语四六级真题全套 含听力音频 有笔记</a></div>
-                    <span class="tag">教材书籍</span><span class="tag">可小刀</span>
-                    <div class="card-meta">
-                        <span class="card-price">￥15<small> 原价 ￥45</small></span>
-                        <span>当面交易</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 商品7：宿舍用品 -->
-            <div class="card">
-                <a href="detail.html"><img class="card-img" src="images/goods7.jpg" alt="宿舍迷你小冰箱"></a>
-                <div class="card-body">
-                    <div class="card-title"><a href="detail.html">宿舍迷你小冰箱 20L 静音款 搬宿舍出</a></div>
-                    <span class="tag">宿舍用品</span>
-                    <div class="card-meta">
-                        <span class="card-price">￥120<small> 原价 ￥299</small></span>
-                        <span>自提</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 商品8：服装鞋帽 -->
-            <div class="card">
-                <a href="detail.html"><img class="card-img" src="images/goods8.jpg" alt="耐克运动鞋"></a>
-                <div class="card-body">
-                    <div class="card-title"><a href="detail.html">耐克运动鞋 42 码 只穿过三四次</a></div>
-                    <span class="tag">服装鞋帽</span><span class="tag">可小刀</span>
-                    <div class="card-meta">
-                        <span class="card-price">￥150<small> 原价 ￥499</small></span>
-                        <span>当面交易</span>
-                    </div>
-                </div>
-            </div>
-
+        <div class="goods-grid" id="goodsList">
+            <!-- 商品卡片由 js/list.js 根据 data/goods.js 动态生成 -->
         </div>
 
         <!-- ==================== 分页 ====================
              知识点：超链接 a 实现页面跳转（教材 P23） -->
-        <div class="pager">
-            <a href="list.html">上一页</a>
-            <a href="list.html" class="on">1</a>
-            <a href="list.html">2</a>
-            <a href="list.html">3</a>
-            <a href="list.html">4</a>
-            <a href="list.html">5</a>
-            <a href="list.html">下一页</a>
-        </div>
+        <div class="pager" id="pager"></div>
 
     </main>
 
@@ -248,6 +136,8 @@
     <button class="back-top" id="backTop">↑</button>
 
     <!-- 外部 JavaScript 文件（知识点：外部 JS，教材 P205） -->
+    <script src="data/goods.js"></script>
+    <script src="js/list.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
