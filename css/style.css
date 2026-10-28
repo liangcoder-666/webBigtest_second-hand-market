@@ -1,15 +1,12 @@
 /* ============================================================
    校园二手交易平台 —— 公共样式 style.css
-   【外部样式文件】教材参考：项目3（P43 起）、项目4（P85 起）
    ============================================================ */
 
-/* ---------- 1. 全局重置 ----------
-   知识点：盒子模型进阶 box-sizing（教材 P89 任务4-2）
-   * 通配选择器（教材 P48 任务3-2）                     */
+/* ---------- 1. 全局重置 ----------*/
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;          /* 让 padding 和 border 算进 width 里 */
+    box-sizing: border-box;          
 }
 
 body {
@@ -17,34 +14,30 @@ body {
     font-size: 14px;
     color: #2b2b2b;
     background-color: #efe9dc;
-    line-height: 1.7;                /* 行高，教材 P62 任务3-4 */
+    line-height: 1.7;                
 }
 
 a { text-decoration: none; color: inherit; }
-ul, ol { list-style: none; }         /* 去掉列表默认的小圆点，教材 P23 */
+ul, ol { list-style: none; }         
 img { display: block; max-width: 100%; }
 table { border-collapse: collapse; width: 100%; }
 
-/* ---------- 2. 版心容器 ----------
-   知识点：盒子模型 margin auto 水平居中（教材 P87 任务4-1） */
+/* ---------- 2. 版心容器 ---------- */
 .container {
     width: 1200px;
     margin: 0 auto;
 }
 
-/* ---------- 3. 页眉 + 导航 ----------
-   知识点：flex 弹性布局（教材 P327 任务8-3）
-   知识点：定位 position: sticky 吸顶（教材 P104 任务4-4）
-   知识点：显示类型 display: inline-block（教材 P98 任务4-3） */
+/* ---------- 3. 页眉 + 导航 ---------- */
 .header {
     background-color: #fffdf7;
-    box-shadow: 0 2px 10px rgba(158, 43, 37, 0.08);   /* 阴影，教材 P129 */
+    box-shadow: 0 2px 10px rgba(158, 43, 37, 0.08);   
     position: sticky;                /* 吸顶定位 */
     top: 0;
     z-index: 100;
 }
 .header-inner {
-    display: flex;                   /* 弹性布局：让 logo 和导航一左一右 */
+    display: flex;                   
     justify-content: space-between;
     align-items: center;
     height: 72px;
@@ -55,18 +48,18 @@ table { border-collapse: collapse; width: 100%; }
     color: #9e2b25;
     letter-spacing: 1px;
 }
-.logo span { color: #7a6a55; }       /* 强调色 */
+.logo span { color: #7a6a55; }       
 .nav {
     display: flex;
     align-items: center;
 }
 .nav a {
-    display: inline-block;           /* 显示类型设定 */
-    padding: 9px 18px;               /* 盒子模型：内边距 */
+    display: inline-block;          
+    padding: 9px 18px;             
     margin-left: 4px;
     color: #4a3b2a;
-    border-radius: 8px;              /* 圆角，教材 P129 */
-    transition: all 0.3s;            /* 过渡，教材 P129 */
+    border-radius: 8px;             
+    transition: all 0.3s;            
 }
 .nav a:hover,
 .nav a.active {
@@ -85,7 +78,7 @@ table { border-collapse: collapse; width: 100%; }
 
 /* ---------- 4. 通用标题 ---------- */
 .section-title {
-    text-align: center;              /* 文本对齐，教材 P62 */
+    text-align: center;              
     font-size: 26px;
     color: #4a3b2a;
     margin: 50px 0 8px;
@@ -111,15 +104,12 @@ table { border-collapse: collapse; width: 100%; }
 }
 .btn:hover {
     background-color: #7a211d;
-    transform: translateY(-2px);     /* 2D 变形 y 轴平移，教材 P129 */
+    transform: translateY(-2px);     
 }
 .btn-green { background-color: #7a6a55; }
 .btn-green:hover { background-color: #4a3b2a; }
 
-/* ---------- 6. 商品卡片 ----------
-   知识点：盒子模型 border/padding/margin（教材 P87）
-   知识点：背景设定（教材 P114）
-   知识点：CSS3 圆角 + 阴影 + 变形（教材 P129） */
+/* ---------- 6. 商品卡片 ---------- */
 .card {
     background-color: #fffdf7;
     border: 1px solid #ded3ba;
@@ -128,13 +118,13 @@ table { border-collapse: collapse; width: 100%; }
     transition: all 0.35s;
 }
 .card:hover {
-    transform: translateY(-6px);                     /* 悬停上浮 */
+    transform: translateY(-6px);                     
     box-shadow: 0 14px 28px rgba(158, 43, 37, 0.16);
     border-color: #e0d5bd;
 }
 .card-img {
     width: 100%;
-    aspect-ratio: 4 / 3;             /* 高度按 4:3 自动跟着宽度算，任何屏幕宽度都不会裁切 */
+    aspect-ratio: 4 / 3;             
     object-fit: cover;
     object-position: center;
     background-color: #f2ece0;
@@ -179,11 +169,10 @@ table { border-collapse: collapse; width: 100%; }
     font-size: 12px;
 }
 
-/* ---------- 7. 商品网格（4 列）----------
-   知识点：grid 网格布局（教材 P360 任务9-1） */
+/* ---------- 7. 商品网格（4 列）---------- */
 .goods-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);   /* 4 列，每列等宽 */
+    grid-template-columns: repeat(4, 1fr);   
     gap: 22px;
     margin-bottom: 40px;
 }
@@ -213,7 +202,7 @@ table { border-collapse: collapse; width: 100%; }
 /* ---------- 9. 商品详情页 ---------- */
 .detail-wrap {
     display: grid;
-    grid-template-columns: 480px 1fr;    /* 左图右信息 */
+    grid-template-columns: 480px 1fr;    
     gap: 40px;
     background-color: #fffdf7;
     border-radius: 12px;
@@ -234,10 +223,10 @@ table { border-collapse: collapse; width: 100%; }
 }
 .detail-price strong { font-size: 32px; color: #c0392b; }
 
-/* 参数表：定义列表 dl/dt/dd（教材 P23 任务2-2） */
+/* 参数表：定义列表 dl/dt/dd */
 .param-list { margin: 18px 0; }
 .param-list dt {
-    float: left;                      /* 浮动，教材 P98 */
+    float: left;                      
     width: 90px;
     color: #7a6a55;
     clear: both;
@@ -248,8 +237,7 @@ table { border-collapse: collapse; width: 100%; }
     color: #2b2b2b;
 }
 
-/* ---------- 10. 表单 ----------
-   知识点：表单样式设计（教材 P182 任务5-3） */
+/* ---------- 10. 表单 ---------- */
 .form-box {
     background-color: #fffdf7;
     border-radius: 12px;
@@ -303,7 +291,7 @@ table { border-collapse: collapse; width: 100%; }
 .tip.error { color: #c0392b; }
 .tip.ok { color: #7a6a55; }
 
-/* ---------- 11. 表格（教材 P31 任务2-4）---------- */
+/* ---------- 11. 表格 ---------- */
 .data-table th,
 .data-table td {
     border: 1px solid #ded3ba;
@@ -315,7 +303,7 @@ table { border-collapse: collapse; width: 100%; }
     color: #fffdf7;
     font-weight: normal;
 }
-.data-table tr:nth-child(even) {      /* 结构伪类选择器，教材 P54 */
+.data-table tr:nth-child(even) {      
     background-color: #faf5ea;
 }
 
@@ -341,9 +329,9 @@ table { border-collapse: collapse; width: 100%; }
     border-color: #9e2b25;
 }
 
-/* ---------- 13. 页脚（教材 P154 任务4-10）---------- */
+/* ---------- 13. 页脚---------- */
 .footer {
-    background-color: #4a3b2a;       /* 深棕（东坡博客配色） */
+    background-color: #4a3b2a;       
     color: #e0d5bd;
     text-align: center;
     padding: 26px 0;
@@ -352,15 +340,15 @@ table { border-collapse: collapse; width: 100%; }
 }
 .footer a { color: #c9b894; }
 
-/* ---------- 13.1 分类入口图标：朱红圆形 + 汉字 ---------- */
+/* ---------- 13.1 分类入口图标 ---------- */
 .cate-item .ico {
     width: 48px;
     height: 48px;
     line-height: 48px;
     margin: 0 auto 10px;
     border-radius: 50%;
-    background-color: #9e2b25;       /* 朱红圆底 */
-    color: #fff8ee;                  /* 米白字 */
+    background-color: #9e2b25;       
+    color: #fff8ee;                 
     font-size: 19px;
     display: block;
     transition: all 0.3s;
@@ -370,8 +358,7 @@ table { border-collapse: collapse; width: 100%; }
     color: #9e2b25;
 }
 
-/* ---------- 14. 回到顶部按钮 ----------
-   知识点：固定定位 position: fixed（教材 P104 任务4-4） */
+/* ---------- 14. 回到顶部按钮 ---------- */
 .back-top {
     position: fixed;
     right: 30px;
@@ -386,7 +373,7 @@ table { border-collapse: collapse; width: 100%; }
     border-radius: 50%;
     font-size: 20px;
     cursor: pointer;
-    display: none;                    /* 默认藏起来，滚动后由 JS 显示 */
+    display: none;                    
     box-shadow: 0 6px 16px rgba(158, 43, 37, 0.3);
     transition: all 0.3s;
 }
@@ -395,8 +382,7 @@ table { border-collapse: collapse; width: 100%; }
     transform: translateY(-4px);
 }
 
-/* ---------- 15. 巨幕轮播（首页）----------
-   知识点：定位（父相子绝）、过渡、变形（教材 P104、P129） */
+/* ---------- 15. 巨幕轮播（首页）---------- */
 .banner {
     position: relative;
     height: 380px;
@@ -406,26 +392,26 @@ table { border-collapse: collapse; width: 100%; }
     box-shadow: 0 10px 30px rgba(158, 43, 37, 0.15);
 }
 .banner-item {
-    position: absolute;               /* 绝对定位：所有图片叠在一起 */
+    position: absolute;              
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0;                       /* 默认透明，由 JS 控制显示 */
-    transition: opacity 0.8s;         /* 淡入淡出过渡 */
+    opacity: 0;                       
+    transition: opacity 0.8s;        
 }
 .banner-item.on { opacity: 1; }
 .banner-text {
     position: absolute;
     left: 70px;
     bottom: 62px;
-    color: #fff8ee;                  /* 米白（取自东坡博客配色） */
+    color: #fff8ee;                  
     z-index: 2;
     text-shadow: 0 2px 14px rgba(40, 20, 10, 0.55);
 }
 .banner-text h2 {
-    font-size: 50px;                 /* 字号放大 */
+    font-size: 50px;                
     font-weight: bold;
     letter-spacing: 4px;
     margin-bottom: 12px;
@@ -483,8 +469,8 @@ table { border-collapse: collapse; width: 100%; }
 
 /* ---------- 16. 公告栏 ---------- */
 .notice {
-    background-color: #faf5ea;       /* 宣纸浅底 */
-    border-left: 5px solid #9e2b25;  /* 朱红竖线 */
+    background-color: #faf5ea;      
+    border-left: 5px solid #9e2b25;  
     border-radius: 8px;
     padding: 16px 24px;
     margin: 26px 0 10px;
@@ -510,7 +496,7 @@ table { border-collapse: collapse; width: 100%; }
     margin-bottom: 50px;
 }
 .rank li {
-    list-style: decimal inside;       /* 显示序号，教材 P23 */
+    list-style: decimal inside;      
     padding: 9px 0;
     border-bottom: 1px dashed #f2ece0;
     color: #4a3b2a;
@@ -564,7 +550,7 @@ table { border-collapse: collapse; width: 100%; }
 .mt40 { margin-top: 40px; }
 .mb20 { margin-bottom: 20px; }
 .text-center { text-align: center; }
-.clearfix::after {                    /* 清除浮动，教材 P98 */
+.clearfix::after {                    
     content: "";
     display: block;
     clear: both;

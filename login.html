@@ -7,12 +7,10 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
 
-    <!-- 内部样式：本页专用（登录框居中、标签页切换），不改动 css/style.css
-         知识点：盒子的宽高与 margin auto 居中（教材 P87） -->
     <style>
         .login-wrap {
-            width: 460px;                 /* 登录框宽度约 460px */
-            margin: 40px auto 60px;       /* 上下留白 + 水平居中 */
+            width: 460px;                
+            margin: 40px auto 60px;       
         }
         .login-title {
             text-align: center;
@@ -26,7 +24,7 @@
             font-size: 13px;
             margin-bottom: 22px;
         }
-        /* 标签页按钮：flex 平均分配 */
+       
         .login-tabs {
             display: flex;
             border-bottom: 2px solid #ded3ba;
@@ -48,7 +46,7 @@
             border-bottom-color: #9e2b25;
         }
         .login-wrap .form-box { margin: 0; }
-        .panel { display: none; }         /* 默认隐藏，由 JS 控制显示 */
+        .panel { display: none; }         
         .panel.on { display: block; }
         .login-tip-bottom {
             text-align: center;
@@ -82,14 +80,13 @@
             <h2 class="login-title mt40">欢迎回来</h2>
             <p class="login-sub">登录后可发布商品、收藏闲置，也能直接联系卖家</p>
 
-            <!-- 标签页：登录 / 注册，点击调用内部 JS 的 switchTab() 切换 -->
+            <!-- 标签页：登录 / 注册 -->
             <div class="login-tabs">
                 <a class="tab-btn on" id="tabLogin" onclick="return switchTab('login')">登录</a>
                 <a class="tab-btn" id="tabReg" onclick="return switchTab('reg')">注册</a>
             </div>
 
-            <!-- ==================== 登录面板 ====================
-                 知识点：表单控件 input（教材 P161、P164）、表单样式设计（教材 P182） -->
+            <!-- ==================== 登录面板 ==================== -->
             <div class="panel on" id="loginPanel">
                 <form class="form-box" action="#" method="post" onsubmit="return checkLogin();">
 
@@ -97,7 +94,7 @@
                         <label for="loginPhone">手机号 <em>*</em></label>
                         <input type="text" id="loginPhone" name="phone" maxlength="11"
                                placeholder="请输入 11 位手机号">
-                        <!-- 验证提示：默认灰色，校验后由 JS 改成 .tip.ok / .tip.error -->
+                        
                         <p class="tip" id="loginPhoneTip">手机号必须为 1 开头的 11 位数字</p>
                     </div>
 
@@ -116,8 +113,7 @@
                 </form>
             </div>
 
-            <!-- ==================== 注册面板 ====================
-                 默认隐藏，点上面的「注册」标签才显示 -->
+            <!-- ==================== 注册面板 ==================== -->
             <div class="panel" id="regPanel">
                 <form class="form-box" action="#" method="post" onsubmit="return checkReg();">
 
@@ -177,20 +173,12 @@
 
     <script src="js/main.js"></script>
 
-    <!-- ============================================================
-         内部 JavaScript：登录 / 注册表单验证
-         知识点：正则表达式与控制流程，教材 P216、P223
-         知识点：DOM 元素获取与事件，教材 P257
-         ============================================================ -->
     <script>
-        // 【正则表达式，教材 P223】手机号规则：1 开头，第 2 位 3~9，后面还有 9 位数字
         var PHONE_REG = /^1[3-9]\d{9}$/;
-        // 密码长度要求：6~16 位
         var PWD_MIN = 6;
         var PWD_MAX = 16;
 
-        // 统一显示提示：ok 为 true 就显示绿色（.tip.ok），否则显示红色（.tip.error）
-        // 知识点：字符串拼接与 DOM 操作（教材 P216、P257）
+        // 统一显示提示
         function showTip(id, ok, msg) {
             var el = document.getElementById(id);
             el.innerHTML = msg;
@@ -198,7 +186,6 @@
         }
 
         // 切换登录 / 注册两个标签页
-        // 知识点：if...else 分支控制流程，教材 P216
         function switchTab(tab) {
             var loginPanel = document.getElementById("loginPanel");
             var regPanel   = document.getElementById("regPanel");
@@ -223,9 +210,9 @@
         function checkLogin() {
             var phone = document.getElementById("loginPhone").value;
             var pwd   = document.getElementById("loginPwd").value;
-            var pass  = true;   // 标记是否全部通过
+            var pass  = true;   
 
-            // 1. 校验手机号：用正则 test() 方法判断（教材 P223）
+            // 1. 校验手机号：用正则 test()
             if (PHONE_REG.test(phone)) {
                 showTip("loginPhoneTip", true, "√ 手机号格式正确");
             } else {
@@ -233,7 +220,7 @@
                 pass = false;
             }
 
-            // 2. 校验密码长度：必须 6~16 位（逻辑与 &&）
+            // 2. 校验密码长度
             if (pwd.length >= PWD_MIN && pwd.length <= PWD_MAX) {
                 showTip("loginPwdTip", true, "√ 密码长度符合要求");
             } else {
@@ -254,7 +241,7 @@
             var pwd2  = document.getElementById("regPwd2").value;
             var pass  = true;
 
-            // 1. 校验手机号（正则表达式，教材 P223）
+            // 1. 校验手机号
             if (PHONE_REG.test(phone)) {
                 showTip("regPhoneTip", true, "√ 手机号格式正确");
             } else {
@@ -270,7 +257,7 @@
                 pass = false;
             }
 
-            // 3. 校验两次密码是否一致（字符串相等比较）
+            // 3. 校验两次密码是否一致
             if (pwd2 === "") {
                 showTip("regPwd2Tip", false, "× 请再次输入密码");
                 pass = false;
@@ -287,7 +274,7 @@
             return false;   // 阻止表单真正提交
         }
 
-        // 页面打开时默认显示「登录」标签（教材 P257 DOM 操作）
+        // 页面打开时默认显示「登录」标签
         window.onload = function () {
             switchTab("login");
         };

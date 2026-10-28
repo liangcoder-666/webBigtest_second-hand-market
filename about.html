@@ -7,12 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
 
-    <!-- ============================================================
-         内部样式（本页专用，不改动 css/style.css）
-         教材参考：项目3 内部样式表（P43 起）
-         ============================================================ -->
     <style>
-        /* 知识点：平滑滚动（点击锚点链接时页面缓缓滑到目标位置） */
         html { scroll-behavior: smooth; }
 
         /* ---------- 面包屑导航 ---------- */
@@ -25,8 +20,7 @@
         .breadcrumb a:hover { text-decoration: underline; }
         .breadcrumb span { margin: 0 6px; color: #d8cdb8; }
 
-        /* ---------- 页面内锚点导航（知识点：锚点链接，教材 P23）----------
-           点击这些链接会跳到页面里对应 id 的标题处 */
+        /* ---------- 页面内锚点导航---------- */
         .anchor-nav {
             display: flex;
             flex-wrap: wrap;
@@ -57,7 +51,7 @@
             color: #8c8578;
             text-align: right;
             margin-top: 10px;
-            text-indent: 0;              /* 取消 .about-box p 的 2 字缩进 */
+            text-indent: 0;              
         }
 
         /* ---------- 联系方式列表 ---------- */
@@ -73,7 +67,7 @@
         .contact-list a { color: #9e2b25; }
         .contact-list a:hover { text-decoration: underline; }
 
-        /* ---------- 常见问题：定义列表 dl / dt / dd（教材 P23）---------- */
+        /* ---------- 常见问题：定义列表 dl / dt / dd ---------- */
         .faq-list { margin-top: 8px; }
         .faq-list dt {
             font-weight: bold;
@@ -119,8 +113,7 @@
             <a href="index.html">首页</a><span>/</span>关于我们
         </div>
 
-        <!-- ==================== 页面内锚点导航（教材 P23）====================
-             点击下面的链接可以跳到本页对应的内容区 -->
+        <!-- ==================== 页面内锚点导航 ==================== -->
         <nav class="anchor-nav">
             <a href="#intro">平台简介</a>
             <a href="#data">我们的数据</a>
@@ -264,7 +257,6 @@
 
     <!-- 内部 JavaScript：手机端汉堡菜单展开 / 收起 -->
     <script>
-        // 知识点：DOM 操作、事件监听、classList（教材 P216、P278）
         var navToggle = document.getElementById("navToggle");
         var nav = document.getElementById("nav");
         if (navToggle && nav) {

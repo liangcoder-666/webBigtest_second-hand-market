@@ -58,7 +58,7 @@
         </div>
         </div>
 
-        <!-- ==================== 平台公告（静态）==================== -->
+        <!-- ==================== 平台公告 ==================== -->
         <div class="notice">
             <h4>&#9670; 平台公告</h4>
             <ul>
@@ -211,14 +211,12 @@
 
     <!-- 内部 JavaScript（仅首页）：点击商品卡片跳转到详情页 -->
     <script>
-        // 知识点：DOM 获取元素、for 循环、事件绑定（教材 P257、P216、P278）
         var cards = document.querySelectorAll(".goods-grid .card");
         for (var i = 0; i < cards.length; i++) {
-            // 给每张卡片绑定点击事件：点一下跳到商品详情页
             cards[i].onclick = function () {
                 window.location.href = "detail.html";
             };
-            cards[i].style.cursor = "pointer";   // 鼠标移上去变成小手
+            cards[i].style.cursor = "pointer";   
         }
     </script>
 </body>

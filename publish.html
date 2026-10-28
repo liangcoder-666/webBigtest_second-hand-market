@@ -7,12 +7,10 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
 
-    <!-- 内部样式：本页专用（左表单 + 右须知 两栏布局），不改动 css/style.css
-         知识点：grid 网格布局（教材 P360） -->
     <style>
         .publish-wrap {
             display: grid;
-            grid-template-columns: 1fr 320px;    /* 左宽右窄两栏 */
+            grid-template-columns: 1fr 320px;   
             gap: 26px;
             align-items: start;
             margin-top: 26px;
@@ -20,6 +18,7 @@
         .publish-wrap .form-box { margin: 0; }
         .publish-side { position: sticky; top: 92px; }
         .publish-side .notice { margin-top: 0; }
+        
         /* 文件选择框默认没被 style.css 覆盖，这里补一下 */
         .form-item input[type="file"] {
             width: 100%;
@@ -59,12 +58,9 @@
 
         <div class="publish-wrap">
 
-            <!-- ==================== 左侧：发布表单 ====================
-                 知识点：表单 form 与表单控件（教材 P161、P164）
-                 知识点：表单样式设计（教材 P182 任务5-3） -->
+            <!-- ==================== 左侧：发布表单 ====================） -->
             <form class="form-box" action="#" method="post" enctype="multipart/form-data">
 
-                <!-- 文本框 input type="text"（教材 P164） -->
                 <div class="form-item">
                     <label for="title">商品标题 <em>*</em></label>
                     <input type="text" id="title" name="title" maxlength="40"
@@ -72,7 +68,7 @@
                     <p class="tip">标题写清楚「书名 / 型号 + 新旧程度」，更容易被同学搜到</p>
                 </div>
 
-                <!-- 数字输入框 input type="number" -->
+                <!-- 数字输入框  -->
                 <div class="form-item">
                     <label for="price">出售价格（元） <em>*</em></label>
                     <input type="number" id="price" name="price" min="0" step="0.01"
@@ -80,7 +76,7 @@
                     <p class="tip">单位为元，填写你期望的成交价，支持两位小数</p>
                 </div>
 
-                <!-- 下拉列表框 select + option（教材 P164） -->
+                <!-- 下拉列表框  -->
                 <div class="form-item">
                     <label for="cate">商品分类 <em>*</em></label>
                     <select id="cate" name="cate">
@@ -107,7 +103,7 @@
                     <p class="tip">请如实填写，避免交易时产生纠纷</p>
                 </div>
 
-                <!-- 单选按钮组 input type="radio" -->
+                <!-- 单选按钮组 -->
                 <div class="form-item">
                     <label>交易方式 <em>*</em></label>
                     <div class="radio-group">
@@ -117,7 +113,7 @@
                     <p class="tip">校内当面交易不收运费，建议同校同学优先选择</p>
                 </div>
 
-                <!-- 复选框组 input type="checkbox" -->
+                <!-- 复选框组 -->
                 <div class="form-item">
                     <label>商品标签</label>
                     <div class="check-group">
@@ -206,17 +202,15 @@
 
     <script src="js/main.js"></script>
 
-    <!-- 内部 JavaScript：提交前的简单检查（教材 P257、P278） -->
+    <!-- 内部 JavaScript：提交前的简单检查 -->
     <script>
-        // 知识点：DOM 元素获取、事件与 if 控制流程（教材 P257、P278、P216）
         var form = document.querySelector(".form-box");
         form.onsubmit = function () {
-            var title = document.getElementById("title").value;   // 商品标题
-            var price = document.getElementById("price").value;   // 价格
-            var phone = document.getElementById("phone").value;   // 手机号
-            var agree = document.getElementById("agree").checked; // 是否同意规则
+            var title = document.getElementById("title").value;   
+            var price = document.getElementById("price").value;  
+            var phone = document.getElementById("phone").value;   
+            var agree = document.getElementById("agree").checked; 
 
-            // 逐个判断，只要有一个不满足就用 alert 提醒并阻止提交
             if (title === "") {
                 alert("请填写商品标题！");
                 return false;

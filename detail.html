@@ -4,20 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>商品详情 - 校园二手交易平台</title>
-    <!-- 外部样式文件（知识点：外部样式表，教材 P48） -->
     <link rel="stylesheet" href="css/style.css">
-    <!-- 响应式样式（知识点：媒体查询，教材 P323） -->
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
-    <!-- ==================== 页眉 + 导航（知识点：超链接导航，教材 P23）==================== -->
+    <!-- ==================== 页眉 + 导航  ==================== -->
     <header class="header">
         <div class="container header-inner">
             <a href="index.html" class="logo">校园<span>二手</span>交易平台</a>
             <nav class="nav" id="nav">
                 <a href="index.html">首页</a>
-                <a href="list.html" class="active">商品列表</a>       <!-- 所属栏目高亮 -->
+                <a href="list.html" class="active">商品列表</a>       
                 <a href="publish.html">发布商品</a>
                 <a href="about.html">关于我们</a>
                 <a href="login.html">登录</a>
@@ -35,8 +33,7 @@
             <em>商品详情</em>
         </div>
 
-        <!-- ==================== 商品详情：左图右信息 ====================
-             知识点：grid 网格布局（教材 P360）、图像 img（教材 P29） -->
+        <!-- ==================== 商品详情：左图右信息 ==================== -->
         <div class="detail-wrap">
 
             <!-- 左栏：商品大图 -->
@@ -50,15 +47,14 @@
 
                 <div id="dTags"><span class="tag">教材书籍</span><span class="tag">可小刀</span><span class="tag">同校当面交易</span></div>
 
-                <!-- 价格区：知识点 文本样式（教材 P62） -->
+                <!-- 价格区 -->
                 <div class="detail-price">
                     <strong id="dPrice">￥25</strong>
                         <span class="card-old" id="dOld">原价 ￥68</span>
                     <div class="tip" id="dTip">看货满意再付款</div>
                 </div>
 
-                <!-- ==================== 商品参数：定义列表 dl / dt / dd ====================
-                     知识点：定义列表，教材 P23（任务 2-2） -->
+                <!-- ==================== 商品参数：定义列表 dl / dt / dd ==================== -->
                 <dl class="param-list clearfix">
                     <dt>分类</dt>
                     <dd>教材书籍 / 高等数学</dd>
@@ -85,8 +81,7 @@
                     <dd id="dQQ">QQ 123456789</dd>
                 </dl>
 
-                <!-- 数量选择 + 联系卖家按钮
-                     知识点：下拉列表 select（教材 P164）、按钮 button -->
+                <!-- 数量选择 + 联系卖家按钮 -->
                 <div class="buy-bar">
                     <label for="qty">数量：</label>
                     <select id="qty" name="qty">
@@ -99,7 +94,7 @@
                     <button class="btn btn-green" type="button" id="btnContact">立即联系卖家</button>
                 </div>
 
-                <!-- 卖家信息卡片（本页专用样式见页面底部 <style>） -->
+                <!-- 卖家信息卡片 -->
                 <div class="seller-card">
                     <img src="images/avatar1.jpg" alt="卖家头像">
                     <div>
@@ -111,8 +106,7 @@
             </div>
         </div>
 
-        <!-- ==================== 留言区 ====================
-             知识点：表单 form + 多行文本域 textarea（教材 P161、P164） -->
+        <!-- ==================== 留言区 ==================== -->
         <div class="comment-box">
             <h3>留言咨询</h3>
             <form id="commentForm" action="#" method="post">
@@ -143,21 +137,16 @@
         </div>
     </footer>
 
-    <!-- 回到顶部按钮（知识点：固定定位 position: fixed，教材 P104，由 main.js 控制显示） -->
+    <!-- 回到顶部按钮 -->
     <button class="back-top" id="backTop">↑</button>
 
-    <!-- 外部 JavaScript 文件（知识点：外部 JS，教材 P205） -->
     <script src="data/goods.js"></script>
     <script src="js/detail.js"></script>
     <script src="js/main.js"></script>
 
-    <!-- ============================================================
-         本页专用样式（写在页面底部，不改动 css/style.css）
-         知识点：盒子模型 border/padding/margin（教材 P87）、
-                 CSS3 圆角 + 阴影（教材 P129）、flex 弹性布局（教材 P327）
-         ============================================================ -->
+    
     <style>
-        /* 面包屑导航：本页多一级“商品详情” */
+        /* 面包屑导航*/
         .breadcrumb {
             padding: 18px 0 2px;
             color: #7a6a55;
@@ -167,7 +156,7 @@
         .breadcrumb a:hover { text-decoration: underline; }
         .breadcrumb em { color: #4a3b2a; font-style: normal; }
 
-        /* 数量选择 + 联系卖家按钮：知识点 flex 弹性布局（教材 P327） */
+        /* 数量选择 + 联系卖家按钮 */
         .buy-bar {
             display: flex;
             align-items: center;
@@ -184,12 +173,12 @@
             outline: none;
             transition: all 0.3s;
         }
-        .buy-bar select:focus {                    /* 伪类选择器，教材 P54 */
+        .buy-bar select:focus {                    
             border-color: #9e2b25;
             box-shadow: 0 0 0 3px rgba(158, 43, 37, 0.12);
         }
 
-        /* 卖家信息卡片：知识点 盒子模型（教材 P87）+ CSS3 圆角阴影（教材 P129） */
+        /* 卖家信息卡片 */
         .seller-card {
             display: flex;
             align-items: center;
@@ -203,7 +192,7 @@
         .seller-card img {
             width: 60px;
             height: 60px;
-            border-radius: 50%;                    /* 圆形头像 */
+            border-radius: 50%;                    
             border: 3px solid #e0d5bd;
             object-fit: cover;
         }
@@ -231,12 +220,12 @@
         .comment-list { margin-top: 22px; }
         .comment {
             padding: 16px 0;
-            border-top: 1px dashed #ded3ba;        /* 虚线上分隔线 */
+            border-top: 1px dashed #ded3ba;        
         }
         .comment:first-child { border-top: none; }
         .comment .c-head {
             display: flex;
-            justify-content: space-between;        /* 昵称和时间一左一右 */
+            justify-content: space-between;        
             margin-bottom: 6px;
         }
         .comment .c-name { color: #9e2b25; font-weight: bold; }

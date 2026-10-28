@@ -4,18 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>商品列表 - 校园二手交易平台</title>
-    <!-- 外部样式文件（知识点：外部样式表，教材 P48） -->
     <link rel="stylesheet" href="css/style.css">
-    <!-- 响应式样式（知识点：媒体查询，教材 P323） -->
     <link rel="stylesheet" href="css/responsive.css">
 
-    <!-- ============================================================
-         内部样式（知识点：内部样式表，教材 P48）
-         本页专用：面包屑导航 + 筛选表单排版 + 列表页小标题
-         ★ 只在本页生效，不改动 css/style.css
-         ============================================================ -->
     <style>
-        /* 面包屑导航：知识点 超链接 a（教材 P23） */
+        /* 面包屑导航 */
         .breadcrumb {
             padding: 18px 0 2px;
             color: #7a6a55;
@@ -23,9 +16,9 @@
         }
         .breadcrumb a { color: #9e2b25; }
         .breadcrumb a:hover { text-decoration: underline; }
-        .breadcrumb em { color: #4a3b2a; font-style: normal; }   /* 当前页不是链接 */
+        .breadcrumb em { color: #4a3b2a; font-style: normal; }  
 
-        /* 筛选表单：知识点 flex 弹性布局（教材 P327） */
+        /* 筛选表单 */
         .filter-box {
             display: flex;
             flex-wrap: wrap;
@@ -35,11 +28,11 @@
             margin: 12px 0 30px;
         }
         .filter-box .form-item {
-            margin-bottom: 0;                /* 盖掉 .form-item 的下外边距 */
-            flex: 1 1 190px;                 /* 每项等分，窄了就换行 */
+            margin-bottom: 0;             
+            flex: 1 1 190px;               
         }
         .filter-box .form-item label { font-size: 13px; margin-bottom: 5px; }
-        .filter-box .btn { flex: 0 0 auto; }  /* 按钮不参与拉伸 */
+        .filter-box .btn { flex: 0 0 auto; } 
 
         /* 列表页小标题 */
         .page-head { margin: 4px 0 0; }
@@ -49,13 +42,13 @@
 </head>
 <body>
 
-    <!-- ==================== 页眉 + 导航（知识点：无序列表导航，教材 P23）==================== -->
+    <!-- ==================== 页眉 + 导航 ==================== -->
     <header class="header">
         <div class="container header-inner">
             <a href="index.html" class="logo">校园<span>二手</span>交易平台</a>
             <nav class="nav" id="nav">
                 <a href="index.html">首页</a>
-                <a href="list.html" class="active">商品列表</a>       <!-- 当前页高亮 -->
+                <a href="list.html" class="active">商品列表</a>       
                 <a href="publish.html">发布商品</a>
                 <a href="about.html">关于我们</a>
                 <a href="login.html">登录</a>
@@ -71,9 +64,7 @@
             <a href="index.html">首页</a> <span>/</span> <em>商品列表</em>
         </div>
 
-        <!-- ==================== 筛选区 ====================
-             知识点：表单 form（教材 P161）、下拉列表 select（教材 P164）、
-                     文本输入框 input[type=text]（教材 P164） -->
+        <!-- ==================== 筛选区 ==================== -->
         <form class="form-box filter-box" action="list.html" method="get">
             <div class="form-item">
                 <label for="cate">商品分类</label>
@@ -112,15 +103,11 @@
             <span>共找到 8 件商品 · 同校当面交易更放心</span>
         </div>
 
-        <!-- ==================== 商品卡片网格 ====================
-             知识点：grid 网格布局（教材 P360）、盒子模型（教材 P87）
-                      图像 img + alt（教材 P29） -->
+        <!-- ==================== 商品卡片网格 ==================== -->
         <div class="goods-grid" id="goodsList">
-            <!-- 商品卡片由 js/list.js 根据 data/goods.js 动态生成 -->
         </div>
 
-        <!-- ==================== 分页 ====================
-             知识点：超链接 a 实现页面跳转（教材 P23） -->
+        <!-- ==================== 分页 ==================== -->
         <div class="pager" id="pager"></div>
 
     </main>
@@ -132,10 +119,9 @@
         </div>
     </footer>
 
-    <!-- 回到顶部按钮（知识点：固定定位 position: fixed，教材 P104，由 main.js 控制显示） -->
+    <!-- 回到顶部按钮 -->
     <button class="back-top" id="backTop">↑</button>
 
-    <!-- 外部 JavaScript 文件（知识点：外部 JS，教材 P205） -->
     <script src="data/goods.js"></script>
     <script src="js/list.js"></script>
     <script src="js/main.js"></script>
