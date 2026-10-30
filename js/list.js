@@ -29,10 +29,10 @@ function filterGoods() {
     for (var i = 0; i < GOODS.length; i++) {
         var g = GOODS[i];
         if (cate !== "" && g.cate !== cate) {
-            continue;                      // 分类对不上，跳过
+            continue;                      
         }
         if (kw !== "" && g.title.indexOf(kw) === -1) {
-            continue;                      // 关键词没命中，跳过
+            continue;                      
         }
         result.push(g);
     }
